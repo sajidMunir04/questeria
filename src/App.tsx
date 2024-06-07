@@ -1,35 +1,51 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import 'tailwindcss/tailwind.css';
+import NavSection from './components/common/NavSection';
+import { useState } from 'react';
+import Dashboard from './components/main/Dashboard';
+import Quizzes from './components/main/Quizzes';
+import CreateQuiz from './components/main/CreateQuiz';
+import DashboardHeader from './components/common/DashboardHeader';
 
 function App() {
-  const [count, setCount] = useState(0)
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+  const [selectedView,setSelectedView] = useState<SelectedView>(SelectedView.Dashboard);
+
+  const handleDashboardButton = () => {
+    setSelectedView(SelectedView.Dashboard);
+  }
+
+  const handleQuizzesButton = () => {
+    setSelectedView(SelectedView.Quizzes);
+  }
+
+  const handleCreateQuizButton = () => {
+    setSelectedView(SelectedView.CreateQuiz);
+  }
+
+  return (<div className='flex w-100 h-100'>
+    <NavSection onDashboardButtonClick={handleDashboardButton} 
+    onQuizzesButtonClick={handleQuizzesButton} onCreateQuizButtonClick={handleCreateQuizButton}/>
+    <div className='flex flex-col w-4/5 h-max' >
+    {<>
+      {selectedView === SelectedView.Dashboard && <DashboardHeader/>}
+      {selectedView === SelectedView.Quizzes && <DashboardHeader/>}
+      {selectedView === SelectedView.CreateQuiz && <DashboardHeader/>}
+    </>}
+    {<>
+    {selectedView === SelectedView.Dashboard && <Dashboard/>}
+    {selectedView === SelectedView.Quizzes && <Quizzes/>}
+    {selectedView === SelectedView.CreateQuiz && <CreateQuiz/>}
+    </>}
+    </div>
+</div>);
 }
 
-export default App
+
+enum SelectedView{
+  Dashboard,
+  Quizzes,
+  CreateQuiz
+}
+
+export default App;
