@@ -1,8 +1,8 @@
 
 
 function DashboardHeader() {
-    return (<div className='h-250'>
-        <p>This is the header</p>
+    return (<div className='h-20 bg-green-500'>
+        
     </div>);
 }
 

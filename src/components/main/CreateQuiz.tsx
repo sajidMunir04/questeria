@@ -52,7 +52,7 @@ function CreateQuiz() {
     }
 
 
-    return (<div>
+    return (<div className='mt-4'>
         {
             questions.map((item) => (<QuizQuestion inputQuestion={item} />))
         }
@@ -63,13 +63,29 @@ function CreateQuiz() {
                     setMultipleChoiceQuestion(question);
             }}/>
             {multipleChoiceQuestion.answers.map((item,index) => (
-                <MCQAnswerInputField defaultValue={item} isCorrectAnswer={multipleChoiceQuestion.correctAnswerIndex === index} 
-                onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                    const question = multipleChoiceQuestion;
-                    question.answers[index] = e.target.value;
-                    setMultipleChoiceQuestion(question);
-                }}/>
-                ))}
+                <div className='m-auto w-1/2 flex items-center'>
+                    <MCQAnswerInputField canEdit={true} onDelete={() => {
+                        const question : MultipleChoiceQuestion = multipleChoiceQuestion;
+                        const filteredAnswers = question.answers.filter((answer,thisIndex) => thisIndex !== index);
+                        question.answers = filteredAnswers;
+                        setMultipleChoiceQuestion(question);
+                        setStateChange(!stateChange);
+                    }} defaultValue={item} isCorrectAnswer={multipleChoiceQuestion.correctAnswerIndex === index} 
+                    onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                        const question = multipleChoiceQuestion;
+                        question.answers[index] = e.target.value;
+                        setMultipleChoiceQuestion(question);
+                    }} onClick={() => {
+                        const question = multipleChoiceQuestion;
+                        question.correctAnswerIndex = index;
+                        setMultipleChoiceQuestion(question);
+                        console.log(question);
+                        setStateChange(!stateChange);
+                    }}
+                    />
+                </div>
+            ))}
+            <div className='flex items-center justify-center'>
             <button onClick={() => {
                 const answerOption : string = ' ';
                 const question = multipleChoiceQuestion;
@@ -77,6 +93,9 @@ function CreateQuiz() {
                     setMultipleChoiceQuestion(question);
                     setStateChange(!stateChange);
                 }}>Add Option</button>
+            <button onClick={() => {
+                setMultipleChoiceQuestion(undefined);
+            }}>Cancel</button>
             <QuestionSaveButton buttonText={"Save Question"} onClick={() => {
                 const theQuestion : Question = {
                     question: multipleChoiceQuestion
@@ -86,6 +105,7 @@ function CreateQuiz() {
                 setQuestions(newQuestions);
                 setMultipleChoiceQuestion(undefined);
             }}/>
+            </div>
         </div>}
         {yesNoQuestion !== undefined && <div>
             <QuestionInputField defaultValue={yesNoQuestion.questionText} onChange={(e : ChangeEvent<HTMLInputElement>) => {

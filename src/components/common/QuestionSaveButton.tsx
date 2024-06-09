@@ -5,7 +5,7 @@ interface Props {
 }
 
 function QuestionSaveButton(props : Props) {
-    return (<button className='mt-8' onClick={props.onClick}>{props.buttonText}</button>);
+    return (<button onClick={props.onClick}>{props.buttonText}</button>);
 }
 
 export default QuestionSaveButton;

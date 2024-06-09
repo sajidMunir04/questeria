@@ -6,7 +6,7 @@ interface Props {
 }
 
 function QuestionInputField(props : Props) {
-    return (<input className='bg-white border-4 border-slate-400 mb-2' type='text' defaultValue={props.defaultValue} onChange={props.onChange}/>);
+    return (<input className='bg-slate-100 mb-5 h-11 border-2 rounded-s-md border-slate-300 w-1/1' type='text' defaultValue={props.defaultValue} onChange={props.onChange}/>);
 }
 
 export default QuestionInputField;

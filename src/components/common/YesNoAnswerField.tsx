@@ -9,7 +9,7 @@ interface Props {
 function YesNoAnswerInputField(props : Props) {
     return (<div>
         <label>
-            <input onClick={props.onClick} type='checkbox'/>{props.value}
+            <input onClick={props.onClick} type='radio'/>{props.value}
         </label>
     </div>);
 }
