@@ -1,7 +1,7 @@
 
 
-export interface YesNoQuestion {
-    question: string,
-    answerIsYes: boolean,
-    answerIsNo: boolean
+export class YesNoQuestion {
+    questionText: string = '';
+    answerIsYes: boolean = false;
+    answerIsNo: boolean = false;
 }

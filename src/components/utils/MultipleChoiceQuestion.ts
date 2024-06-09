@@ -1,6 +1,6 @@
 
-export interface MultipleChoiceQuestion {
-    question: string,
-    answers: string[],
-    correctAnswerIndex: number
+export class MultipleChoiceQuestion {
+    questionText: string = '';
+    answers: string[] = [];
+    correctAnswerIndex: number | undefined= undefined 
 }
