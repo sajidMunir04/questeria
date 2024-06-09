@@ -1,8 +1,7 @@
-import { useMemo, useState } from "react";
-import { Question } from "../utils/Question";
-import { YesNoQuestion } from "../utils/YesNoQuestion";
-import { SimpleQuestion } from "../utils/SimpleQuestion";
 import { multipleChoiceQuestionAlias, simpleQuestionAlias, yesNoQuestionAlias } from "../lib/constants";
+import QuestionInputField from "./QuestionInputField";
+import MCQAnswerInputField from "./MCQAnswerInputField";
+import YesNoAnswerField from "./YesNoAnswerField";
 
 interface Props{
     inputQuestion : string
@@ -20,35 +19,17 @@ function QuizQuestion(props: Props) {
             <input type='text' value={questionData.answerText}/>
         </div>}
         {questionInfo[1] === multipleChoiceQuestionAlias && <div>
-            <p>{questionData.questionText}</p>
-            {questionData.answers.map((item : string,index : number) => <p key={index}>{item}</p>)}
+            <QuestionInputField defaultValue={questionData.questionText}/>
+            {questionData.answers.map((item : string,index : number) => 
+            <MCQAnswerInputField defaultValue={item} isCorrectAnswer={questionData.correctAnswerIndex === index}/>)}
         </div>}
         {questionInfo[1] === yesNoQuestionAlias && <div>
-            <p>{questionData.questionText}</p>
-                <div>
-                    <p>Yes</p>
-                    {questionData.answerIsYes && <div>
-                        <p>&tick;</p>
-                    </div>}
-                </div>
-                <div>
-                    <p>No</p>
-                    {questionData.answerIsNo && <div>
-                        <p>&tick;</p>
-                    </div>}
-                </div>
+            <QuestionInputField defaultValue={questionData.questionText}/>
+            <YesNoAnswerField value={'Yes'} isCorrect={questionData.answerIsYes} onClick={() => {}}/>
+            <YesNoAnswerField value={'No'} isCorrect={questionData.answerIsNo} onClick={() => {}}/>
             </div>}
     </div>);
 }
 
 
 export default QuizQuestion;
-
-
-function isYesNoQuestion(obj : any) {
-    return obj instanceof YesNoQuestion;
-}
-
-function isSimpleQuestion(obj : any) {
-    return obj instanceof SimpleQuestion;
-}

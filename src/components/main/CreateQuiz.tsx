@@ -3,8 +3,13 @@ import { MultipleChoiceQuestion } from "../utils/MultipleChoiceQuestion";
 import { Question } from "../utils/Question";
 import { YesNoQuestion } from "../utils/YesNoQuestion";
 import QuizQuestion from "../common/QuizQuestion";
-import { multipleChoiceQuestionAlias, yesNoQuestionAlias } from "../lib/constants";
+import { multipleChoiceQuestionAlias, simpleQuestionAlias, yesNoQuestionAlias } from "../lib/constants";
 import QuestionInputField from "../common/QuestionInputField";
+import MCQAnswerInputField from "../common/MCQAnswerInputField";
+import QuestionSaveButton from "../common/QuestionSaveButton";
+import YesNoAnswerInputField from "../common/YesNoAnswerField";
+import { SimpleQuestion } from "../utils/SimpleQuestion";
+import AnswerInputField from "../common/AnswerInputField";
 
 
 function CreateQuiz() {
@@ -12,6 +17,7 @@ function CreateQuiz() {
     const [addingQuestion, setQuestionAddStatus] = useState(false);
     const [multipleChoiceQuestion,setMultipleChoiceQuestion] = useState<MultipleChoiceQuestion | undefined>(undefined);
     const [yesNoQuestion,setYesNoQuestion] = useState<YesNoQuestion | undefined>(undefined);
+    const [simpleQuestion,setSimpleQuestion] = useState<SimpleQuestion | undefined>(undefined);
     const [stateChange,setStateChange] = useState(false);
     const [questions,setQuestions] = useState<string[]>([]);
 
@@ -36,8 +42,17 @@ function CreateQuiz() {
     }
 
 
+    const handleSimpleQuestion = () => {
+        const newQuestion : SimpleQuestion = {
+            questionText: "",
+            answerText: ""
+        }
+        setSimpleQuestion(newQuestion);
+        setQuestionAddStatus(false);
+    }
+
+
     return (<div>
-        {<p>{questions.length}</p>}
         {
             questions.map((item) => (<QuizQuestion inputQuestion={item} />))
         }
@@ -48,20 +63,12 @@ function CreateQuiz() {
                     setMultipleChoiceQuestion(question);
             }}/>
             {multipleChoiceQuestion.answers.map((item,index) => (
-                <div className='flex items-center h-10'><p>{index + 1} - </p>
-                <input className='bg-white border-4 border-slate-400' key={item + index} type='text' defaultValue={item} onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                <MCQAnswerInputField defaultValue={item} isCorrectAnswer={multipleChoiceQuestion.correctAnswerIndex === index} 
+                onChange={(e: ChangeEvent<HTMLInputElement>) => {
                     const question = multipleChoiceQuestion;
                     question.answers[index] = e.target.value;
                     setMultipleChoiceQuestion(question);
                 }}/>
-                <label className='flex'  style={{color: 'white', border: 'none' , borderRadius: '50px'}}>
-                <input type='checkbox' className='m-auto ml-5 bg-white w-8 h-8' onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                    const question = multipleChoiceQuestion;
-                    question.correctAnswerIndex = index;
-                    setMultipleChoiceQuestion(question);
-                }}/>
-                </label>
-                </div>
                 ))}
             <button onClick={() => {
                 const answerOption : string = ' ';
@@ -70,7 +77,7 @@ function CreateQuiz() {
                     setMultipleChoiceQuestion(question);
                     setStateChange(!stateChange);
                 }}>Add Option</button>
-            <button onClick={() => {
+            <QuestionSaveButton buttonText={"Save Question"} onClick={() => {
                 const theQuestion : Question = {
                     question: multipleChoiceQuestion
                 }
@@ -78,32 +85,28 @@ function CreateQuiz() {
                 setStateChange(!stateChange);
                 setQuestions(newQuestions);
                 setMultipleChoiceQuestion(undefined);
-            }} className='mt-8'>Save Question</button>
+            }}/>
         </div>}
         {yesNoQuestion !== undefined && <div>
-            <input type='text' defaultValue={yesNoQuestion.questionText} onChange={(e : ChangeEvent<HTMLInputElement>) => {
+            <QuestionInputField defaultValue={yesNoQuestion.questionText} onChange={(e : ChangeEvent<HTMLInputElement>) => {
                 const question = yesNoQuestion;
                 question.questionText = e.target.value;
             }}/>
-            <div>
-                <label>
-                    <input onClick={() => {
-                        const question = yesNoQuestion;
-                        question.answerIsNo = false;
-                        question.answerIsYes = true;
-                    }} type='checkbox'/>Yes
-                </label>
-            </div>
-            <div>
-                <label>
-                    <input onClick={() => {
-                        const question = yesNoQuestion;
-                        question.answerIsNo = true;
-                        question.answerIsYes = false;
-                    }} type='checkbox'/>No
-                </label>
-            </div>
-            <button onClick={() => {
+            <YesNoAnswerInputField value={'Yes'} isCorrect={yesNoQuestion.answerIsYes} 
+            onClick={() => {
+                const question = yesNoQuestion;
+                question.answerIsNo = false;
+                question.answerIsYes = true;
+                setYesNoQuestion(question);
+            }} />
+            <YesNoAnswerInputField value={'No'} isCorrect={yesNoQuestion.answerIsYes} 
+            onClick={() => {
+                const question = yesNoQuestion;
+                question.answerIsNo = true;
+                question.answerIsYes = false;
+                setYesNoQuestion(question);
+            }} />
+            <QuestionSaveButton buttonText={'Save Question'} onClick={() => {
                 const theQuestion : Question = {
                     question: yesNoQuestion
                 }
@@ -111,12 +114,32 @@ function CreateQuiz() {
                 setStateChange(!stateChange);
                 setQuestions(newQuestions);
                 setYesNoQuestion(undefined);
-            }}>Save Question</button>
+            }}/>
+        </div>}
+        {simpleQuestion !== undefined && <div>
+            <QuestionInputField defaultValue={simpleQuestion.questionText} onChange={(e : ChangeEvent<HTMLInputElement>) => {
+                const question = simpleQuestion;
+                question.questionText = e.target.value;
+            }}/>
+            <AnswerInputField defaultValue={simpleQuestion.answerText} onChange={(e : ChangeEvent<HTMLInputElement>) => {
+                const question = simpleQuestion;
+                question.answerText = e.target.value;
+            }}/>
+            <QuestionSaveButton buttonText={'Save Question'} onClick={() => {
+                const theQuestion : Question = {
+                    question: simpleQuestion
+                }
+                const newQuestions = [...questions,JSON.stringify(theQuestion) +'#' + simpleQuestionAlias];
+                setStateChange(!stateChange);
+                setQuestions(newQuestions);
+                setSimpleQuestion(undefined);
+            }}/>
         </div>}
         {addingQuestion && <div>
-        <div>
+            <div>
                 <button onClick={handleMultipleChoiceQuestionButton}>Multiple Choice Question</button>
                 <button onClick={handleYesNoQuestionButton}>Yes No Question</button>
+                <button onClick={handleSimpleQuestion}>Simple Question</button>
             </div>
         </div>}
         <div className='mt-8'>
