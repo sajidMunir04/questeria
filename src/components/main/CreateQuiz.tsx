@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { MultipleChoiceQuestion } from "../utils/MultipleChoiceQuestion";
 import { Question } from "../utils/Question";
 import { YesNoQuestion } from "../utils/YesNoQuestion";
@@ -6,7 +6,7 @@ import QuizQuestion from "../common/QuizQuestion";
 import { multipleChoiceQuestionAlias, simpleQuestionAlias, yesNoQuestionAlias } from "../lib/constants";
 import QuestionInputField from "../common/QuestionInputField";
 import MCQAnswerInputField from "../common/MCQAnswerInputField";
-import QuestionSaveButton from "../common/QuestionSaveButton";
+import SimpleButton from "../common/SimpleButton";
 import YesNoAnswerInputField from "../common/YesNoAnswerField";
 import { SimpleQuestion } from "../utils/SimpleQuestion";
 import AnswerInputField from "../common/AnswerInputField";
@@ -68,6 +68,12 @@ function CreateQuiz() {
                         const question : MultipleChoiceQuestion = multipleChoiceQuestion;
                         const filteredAnswers = question.answers.filter((answer,thisIndex) => thisIndex !== index);
                         question.answers = filteredAnswers;
+
+                        if (question.correctAnswerIndex === index)
+                            question.correctAnswerIndex = 0;
+
+                        console.log(multipleChoiceQuestion.answers,filteredAnswers);
+
                         setMultipleChoiceQuestion(question);
                         setStateChange(!stateChange);
                     }} defaultValue={item} isCorrectAnswer={multipleChoiceQuestion.correctAnswerIndex === index} 
@@ -86,17 +92,17 @@ function CreateQuiz() {
                 </div>
             ))}
             <div className='flex items-center justify-center'>
-            <button onClick={() => {
+            <SimpleButton buttonText={"Add Option"} onClick={() => {
                 const answerOption : string = ' ';
                 const question = multipleChoiceQuestion;
                 question.answers.push(answerOption);
                     setMultipleChoiceQuestion(question);
                     setStateChange(!stateChange);
-                }}>Add Option</button>
-            <button onClick={() => {
+                }}/>
+            <SimpleButton buttonText={"Cancel"} onClick={() => {
                 setMultipleChoiceQuestion(undefined);
-            }}>Cancel</button>
-            <QuestionSaveButton buttonText={"Save Question"} onClick={() => {
+            }}/>
+            <SimpleButton buttonText={"Save Question"} onClick={() => {
                 const theQuestion : Question = {
                     question: multipleChoiceQuestion
                 }
@@ -126,7 +132,7 @@ function CreateQuiz() {
                 question.answerIsYes = false;
                 setYesNoQuestion(question);
             }} />
-            <QuestionSaveButton buttonText={'Save Question'} onClick={() => {
+            <SimpleButton buttonText={'Save Question'} onClick={() => {
                 const theQuestion : Question = {
                     question: yesNoQuestion
                 }
@@ -136,7 +142,7 @@ function CreateQuiz() {
                 setYesNoQuestion(undefined);
             }}/>
         </div>}
-        {simpleQuestion !== undefined && <div>
+        {simpleQuestion !== undefined && <div className='flex flex-col mb-6'>
             <QuestionInputField defaultValue={simpleQuestion.questionText} onChange={(e : ChangeEvent<HTMLInputElement>) => {
                 const question = simpleQuestion;
                 question.questionText = e.target.value;
@@ -145,22 +151,29 @@ function CreateQuiz() {
                 const question = simpleQuestion;
                 question.answerText = e.target.value;
             }}/>
-            <QuestionSaveButton buttonText={'Save Question'} onClick={() => {
-                const theQuestion : Question = {
-                    question: simpleQuestion
-                }
-                const newQuestions = [...questions,JSON.stringify(theQuestion) +'#' + simpleQuestionAlias];
-                setStateChange(!stateChange);
-                setQuestions(newQuestions);
-                setSimpleQuestion(undefined);
-            }}/>
+            <div className='flex'>
+            <div className='w-1/2'>
+                <SimpleButton buttonText={'Save Question'} onClick={() => {
+                    const theQuestion : Question = {
+                        question: simpleQuestion
+                    }
+                    const newQuestions = [...questions,JSON.stringify(theQuestion) +'#' + simpleQuestionAlias];
+                    setStateChange(!stateChange);
+                    setQuestions(newQuestions);
+                    setSimpleQuestion(undefined);
+                }}/>
+            </div>
+            <div className='w-1/2'>
+                <SimpleButton buttonText={"Cancel"} onClick={() => {
+                    setSimpleQuestion(undefined);
+                }}/>
+            </div>
+            </div>
         </div>}
         {addingQuestion && <div>
-            <div>
-                <button onClick={handleMultipleChoiceQuestionButton}>Multiple Choice Question</button>
-                <button onClick={handleYesNoQuestionButton}>Yes No Question</button>
-                <button onClick={handleSimpleQuestion}>Simple Question</button>
-            </div>
+            <SimpleButton buttonText={"Multiple Choice Question"} onClick={handleMultipleChoiceQuestionButton}/>
+            <SimpleButton buttonText={"Yes No Question"} onClick={handleYesNoQuestionButton}/>
+            <SimpleButton buttonText={"Simple Question"} onClick={handleSimpleQuestion}/>
         </div>}
         <div className='mt-8'>
             <button onClick={() => setQuestionAddStatus(true)}>Add Question</button>
