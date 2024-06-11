@@ -7,10 +7,11 @@ interface Props {
 }
 
 function YesNoAnswerInputField(props : Props) {
-    return (<div>
-        <label>
-            <input onClick={props.onClick} type='radio'/>{props.value}
-        </label>
+    return (<div className='flex'>
+        <div className='ml-2 rounded-full border-r-2 border-sky-500'>
+        <p className='text-sky-500'>&#10004;</p>
+        </div>
+        <p className='ml-5'>{props.value}</p>
     </div>);
 }
 
