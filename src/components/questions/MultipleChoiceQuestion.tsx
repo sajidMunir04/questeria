@@ -4,6 +4,7 @@ import QuestionInputField from "../common/QuestionInputField";
 import SimpleButton from "../common/SimpleButton";
 import { QuestionProps } from "./QuestionProps";
 import { MultipleChoiceQuestionData } from "../utils/MultipleChoiceQuestionData";
+import { multipleChoiceQuestionAlias, questionDataSeparator } from "../lib/constants";
 
 function MultipleChoiceQuestion(props : QuestionProps) {
 
@@ -30,7 +31,7 @@ function MultipleChoiceQuestion(props : QuestionProps) {
             correctAnswerIndex: correctAnswerIndex
         }
 
-        props.handleDataChange(JSON.stringify(questionData),props.index);
+        props.handleDataChange(JSON.stringify(questionData) + questionDataSeparator + multipleChoiceQuestionAlias,props.index);
     }
 
     const handleOptionDelete = (field : number) => {
