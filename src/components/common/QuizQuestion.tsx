@@ -26,18 +26,18 @@ function QuizQuestion(props: Props) {
             <button>Delete</button>
         </div>
         {questionInfo[1] === simpleQuestionAlias && <div className='w-3/4 flex flex-col'>
-            <QuestionInputField defaultValue={questionData.questionText} />
+            <QuestionInputField defaultValue={questionData.questionText} canEdit={false} />
             <AnswerInputField defaultValue={questionData.answerText}/>
         </div>}
         {questionInfo[1] === multipleChoiceQuestionAlias && <div className='w-3/4'>
-            <QuestionInputField defaultValue={questionData.questionText}/>
+            <QuestionInputField defaultValue={questionData.questionText} canEdit={false}/>
             {questionData.answers.map((item : string,index : number) => 
             <MCQAnswerInputField onDelete={() => {
                 
             }} canEdit={canEdit} defaultValue={item} isCorrectAnswer={questionData.correctAnswerIndex === index}/>)}
         </div>}
         {questionInfo[1] === yesNoQuestionAlias && <div>
-            <QuestionInputField defaultValue={questionData.questionText}/>
+            <QuestionInputField defaultValue={questionData.questionText} canEdit={false}/>
             <YesNoAnswerField value={'Yes'} isCorrect={questionData.answerIsYes} onClick={() => {}}/>
             <YesNoAnswerField value={'No'} isCorrect={questionData.answerIsNo} onClick={() => {}}/>
         </div>}

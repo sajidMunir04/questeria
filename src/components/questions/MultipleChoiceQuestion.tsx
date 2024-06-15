@@ -11,10 +11,15 @@ function MultipleChoiceQuestion(props : QuestionProps) {
     const [question,setQuestion] = useState<string>('');
     const [answers,setAnswers] = useState<string[]>(['']);
     const [correctAnswerIndex,setCorrectAnswerIndex] = useState(-1);
+    const [canEdit,setEditStatus] = useState(true);
 
     const handleQuestionInput = (e: ChangeEvent<HTMLInputElement>) => {
         setQuestion(e.target.value);
         handleDataChange();
+    }
+
+    const handleSave = () => {
+        setEditStatus(false);
     }
 
     const handleAddOption = () => {
@@ -41,11 +46,13 @@ function MultipleChoiceQuestion(props : QuestionProps) {
 
     return (<div className='flex flex-col mb-8 border-b-2'>
         <p className=''>{props.index + 1}-</p>
-        <QuestionInputField defaultValue={question} onChange={handleQuestionInput}/>
+        <QuestionInputField canEdit={canEdit} defaultValue={question} onChange={handleQuestionInput}/>
         <div className='m-auto w-full flex-col flex items-center'>
-                {answers.map((item,index) => <MCQAnswerInputField key={index} defaultValue={item} isCorrectAnswer={correctAnswerIndex === index} canEdit={true} onDelete={() => handleOptionDelete(index)}/>)}
+                {answers.map((item,index) => <MCQAnswerInputField key={index} defaultValue={item} isCorrectAnswer={correctAnswerIndex === index} canEdit={canEdit} onDelete={() => handleOptionDelete(index)}/>)}
                 <div className='w-1/3 mb-5'>
-                    <SimpleButton buttonText={"Add Option"} onClick={handleAddOption}/>
+                    {canEdit && <SimpleButton buttonText={"Add Option"} onClick={handleAddOption}/>}
+                    {!canEdit && <SimpleButton buttonText={"Edit"} onClick={() => setEditStatus(true)}/>}
+                    <SimpleButton buttonText={"Save"} onClick={() => setEditStatus(false)}/>
                 </div>    
         </div>
     </div>);
