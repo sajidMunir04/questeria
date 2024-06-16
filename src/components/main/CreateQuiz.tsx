@@ -65,7 +65,7 @@ function CreateQuiz() {
                 }
             })
         }
-        {addingQuestion && <div>
+        {addingQuestion && <div className='flex flex-col justify-between h-40'>
             <SimpleButton buttonText={"Multiple Choice Question"} onClick={handleMultipleChoiceQuestionButton}/>
             <SimpleButton buttonText={"Yes No Question"} onClick={handleYesNoQuestionButton}/>
             <SimpleButton buttonText={"Simple Question"} onClick={handleSimpleQuestion}/>

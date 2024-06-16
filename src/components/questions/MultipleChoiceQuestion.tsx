@@ -48,11 +48,11 @@ function MultipleChoiceQuestion(props : QuestionProps) {
         <p className=''>{props.index + 1}-</p>
         <QuestionInputField canEdit={canEdit} defaultValue={question} onChange={handleQuestionInput}/>
         <div className='m-auto w-full flex-col flex items-center'>
-                {answers.map((item,index) => <MCQAnswerInputField key={index} defaultValue={item} isCorrectAnswer={correctAnswerIndex === index} canEdit={canEdit} onDelete={() => handleOptionDelete(index)}/>)}
+                {answers.map((item,index) => <MCQAnswerInputField onClick={() => setCorrectAnswerIndex(index)} key={index} defaultValue={item} isCorrectAnswer={correctAnswerIndex === index} canEdit={canEdit} onDelete={() => handleOptionDelete(index)}/>)}
                 <div className='w-1/3 mb-5'>
                     {canEdit && <SimpleButton buttonText={"Add Option"} onClick={handleAddOption}/>}
                     {!canEdit && <SimpleButton buttonText={"Edit"} onClick={() => setEditStatus(true)}/>}
-                    <SimpleButton buttonText={"Save"} onClick={() => setEditStatus(false)}/>
+                    {canEdit && <SimpleButton buttonText={"Save"} onClick={() => setEditStatus(false)}/>}
                 </div>    
         </div>
     </div>);

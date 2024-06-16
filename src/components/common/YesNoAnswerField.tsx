@@ -1,3 +1,4 @@
+import SimpleButton from "./SimpleButton";
 
 
 interface Props {
@@ -7,11 +8,15 @@ interface Props {
 }
 
 function YesNoAnswerInputField(props : Props) {
-    return (<div className='flex'>
-        <div className='ml-2 rounded-full border-r-2 border-sky-500'>
-        <p className='text-sky-500'>&#10004;</p>
+    return (<div className='flex mb-3 items-center'>
+        <div className='ml-2 rounded-full border-sky-500 border-solid border-2 w-8 h-8 flex'>
+        <p className='text-sky-500 m-auto'>&#10004;</p>
         </div>
         <p className='ml-5'>{props.value}</p>
+        {props.isCorrect && <p>Correct Answer</p>}
+        {!props.isCorrect && <div>
+        <SimpleButton buttonText={"Mark as Correct"} onClick={props.onClick}/>
+        </div>}
     </div>);
 }
 

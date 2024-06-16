@@ -23,10 +23,10 @@ function YesNoQuestion(props : QuestionProps) {
 
     return (<div className='border-b-2'>
             <p>{props.index + 1}-</p>
-            <QuestionInputField defaultValue={questionText} onChange={(e : ChangeEvent<HTMLInputElement>) => {
-                setQuestionText(e.target.value);
-                handleDataChange();
-            }}/>
+            <QuestionInputField defaultValue={questionText} onChange={(e: ChangeEvent<HTMLInputElement>) => {
+            setQuestionText(e.target.value);
+            handleDataChange();
+        } } canEdit={false}/>
             <div className='mb-5'>
             <YesNoAnswerInputField value={'Yes'} isCorrect={answerIsYes} 
             onClick={() => {

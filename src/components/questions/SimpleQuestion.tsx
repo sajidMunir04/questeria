@@ -20,10 +20,10 @@ function SimpleQuestion(props : QuestionProps) {
 
     return (<div className='border-b-2'>
             <p>{props.index + 1}-</p>
-            <QuestionInputField defaultValue={questionText} onChange={(e : ChangeEvent<HTMLInputElement>) => {
-                setQuestionText(e.target.value);
-                handleDataChange();
-            }}/>
+            <QuestionInputField defaultValue={questionText} onChange={(e: ChangeEvent<HTMLInputElement>) => {
+            setQuestionText(e.target.value);
+            handleDataChange();
+        } } canEdit={false}/>
             <AnswerInputField defaultValue={answerText} onChange={(e : ChangeEvent<HTMLInputElement>) => {
                 setAnswerText(e.target.value);
                 handleDataChange();
