@@ -1,5 +1,5 @@
 import { ChangeEvent, Key, useState } from "react";
-import { multipleChoiceQuestionAlias, simpleQuestionAlias, yesNoQuestionAlias } from "../lib/constants";
+import { multipleChoiceQuestionAlias, saveFormDataURL, simpleQuestionAlias, yesNoQuestionAlias } from "../lib/constants";
 import SimpleButton from "../common/SimpleButton";
 import MultipleChoiceQuestion from "../questions/MultipleChoiceQuestion";
 import { QuestionsType } from "../utils/questions";
@@ -51,6 +51,19 @@ function CreateQuiz() {
         console.log(newData);
     }
 
+    const handleCreateForm = async() => {
+        let mergedData = '';
+        questionsData.forEach((item) => mergedData += item);
+        console.log(mergedData);
+        const response = await fetch(saveFormDataURL,{
+            method: "POST",
+            body: mergedData
+        })
+        console.log(response);
+        const result = await response.json();
+        console.log(result);
+    }
+
     return (<div className='mt-4'>
         {
             quizQuestions.map(function (item: QuestionsType,index: number){
@@ -74,7 +87,7 @@ function CreateQuiz() {
             <button onClick={() => setQuestionAddStatus(true)}>Add Question</button>
         </div>
         <div>
-
+            <SimpleButton buttonText={"Create Form"} onClick={handleCreateForm} />
         </div>
     </div>);
 }
