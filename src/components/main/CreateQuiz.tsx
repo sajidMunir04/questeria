@@ -64,7 +64,8 @@ function CreateQuiz() {
         console.log(result);
     }
 
-    return (<div className='mt-4'>
+    return (<div className='mt-4 w-full p-10 flex flex-col justify-start'>
+        <h3 className='font-poppinsBold text-36px'>Create New Quiz</h3>
         {
             quizQuestions.map(function (item: QuestionsType,index: number){
                 if (item === QuestionsType.MultipleChoiceQuestion) {

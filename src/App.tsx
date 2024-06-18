@@ -23,9 +23,9 @@ function App() {
     setSelectedView(SelectedView.CreateQuiz);
   }
 
-  return (<div className='flex w-100 h-100'>
-    <NavSection onDashboardButtonClick={handleDashboardButton} 
-    onQuizzesButtonClick={handleQuizzesButton} onCreateQuizButtonClick={handleCreateQuizButton}/>
+  return (<div className='flex w-full h-full bg-slate-100'>
+    <NavSection onDashboardButtonClick={handleDashboardButton}
+    onQuizzesButtonClick={handleQuizzesButton} onCreateQuizButtonClick={handleCreateQuizButton} selectedView={selectedView}/>
     <div className='flex flex-col w-4/5 h-max' >
     {<>
       {selectedView === SelectedView.Dashboard && <DashboardHeader/>}
@@ -42,7 +42,7 @@ function App() {
 }
 
 
-enum SelectedView{
+export enum SelectedView{
   Dashboard,
   Quizzes,
   CreateQuiz

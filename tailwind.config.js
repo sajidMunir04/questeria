@@ -3,7 +3,17 @@ export default {
   content: [    "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'purple-background' : '#4D44B5',
+        'custom-background-white-shade': '#FFFFFF',
+        'custom-color-one': '#C1BBEB'
+      },
+      fontFamily :{
+        poppinsMedium: ['Poppins-Medium', 'sans-serif'],
+        poppinsBold: ['Poppins-Bold', 'sans-serif']
+      }
+    },
   },
   plugins: [],
 }

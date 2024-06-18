@@ -5,6 +5,7 @@ import SimpleButton from "../common/SimpleButton";
 import { QuestionProps } from "./QuestionProps";
 import { MultipleChoiceQuestionData } from "../utils/MultipleChoiceQuestionData";
 import { multipleChoiceQuestionAlias, questionDataSeparator } from "../lib/constants";
+import QuestionHeader from "../common/QuestionHeader";
 
 function MultipleChoiceQuestion(props : QuestionProps) {
 
@@ -44,8 +45,9 @@ function MultipleChoiceQuestion(props : QuestionProps) {
         setAnswers(filteredAnswers);
     }
 
-    return (<div className='flex flex-col mb-8 border-b-2'>
-        <p className=''>{props.index + 1}-</p>
+    return (<div className='flex flex-col mb-8 border-b-2 bg-white rounded-lg'>
+        <QuestionHeader questionIndex={props.index}/>
+        <div className='flex flex-col mb-8 border-b-2 p-8'>
         <QuestionInputField canEdit={canEdit} defaultValue={question} onChange={handleQuestionInput}/>
         <div className='m-auto w-full flex-col flex items-center'>
                 {answers.map((item,index) => <MCQAnswerInputField onClick={() => setCorrectAnswerIndex(index)} key={index} defaultValue={item} isCorrectAnswer={correctAnswerIndex === index} canEdit={canEdit} onDelete={() => handleOptionDelete(index)}/>)}
@@ -54,6 +56,7 @@ function MultipleChoiceQuestion(props : QuestionProps) {
                     {!canEdit && <SimpleButton buttonText={"Edit"} onClick={() => setEditStatus(true)}/>}
                     {canEdit && <SimpleButton buttonText={"Save"} onClick={() => setEditStatus(false)}/>}
                 </div>    
+        </div>
         </div>
     </div>);
 }

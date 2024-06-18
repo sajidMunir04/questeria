@@ -1,8 +1,10 @@
 
 
 function Dashboard() {
-    return (<div className='h-700'>
-            <h1>This is Dashboard</h1>
+    return (<div className='h-700 flex'>
+            <div className='m-auto bg-white h-48 w-5/6'>
+
+            </div>
     </div>);
 }
 

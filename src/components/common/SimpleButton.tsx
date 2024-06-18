@@ -5,7 +5,7 @@ interface Props {
 }
 
 function SimpleButton(props : Props) {
-    return (<button className='w-full' onClick={props.onClick}>{props.buttonText}</button>);
+    return (<button className='w-full bg-custom-color-one' onClick={props.onClick}>{props.buttonText}</button>);
 }
 
 export default SimpleButton;
