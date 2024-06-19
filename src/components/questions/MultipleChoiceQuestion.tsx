@@ -6,6 +6,7 @@ import { QuestionProps } from "./QuestionProps";
 import { MultipleChoiceQuestionData } from "../utils/MultipleChoiceQuestionData";
 import { multipleChoiceQuestionAlias, questionDataSeparator } from "../lib/constants";
 import QuestionHeader from "../common/QuestionHeader";
+import OutlinedButton from "../common/OutlinedButton";
 
 function MultipleChoiceQuestion(props : QuestionProps) {
 
@@ -45,14 +46,14 @@ function MultipleChoiceQuestion(props : QuestionProps) {
         setAnswers(filteredAnswers);
     }
 
-    return (<div className='flex flex-col mb-8 border-b-2 bg-white rounded-lg'>
-        <QuestionHeader questionIndex={props.index}/>
+    return (<div className='flex flex-col mb-8 border-b-2 bg-white rounded-2xl'>
+        <QuestionHeader questionIndex={props.index} onDeleteButtonClick={props.deleteQuestion}/>
         <div className='flex flex-col mb-8 border-b-2 p-8'>
         <QuestionInputField canEdit={canEdit} defaultValue={question} onChange={handleQuestionInput}/>
-        <div className='m-auto w-full flex-col flex items-center'>
+        <div className='m-auto w-full flex-col flex justify-start items-start'>
                 {answers.map((item,index) => <MCQAnswerInputField onClick={() => setCorrectAnswerIndex(index)} key={index} defaultValue={item} isCorrectAnswer={correctAnswerIndex === index} canEdit={canEdit} onDelete={() => handleOptionDelete(index)}/>)}
-                <div className='w-1/3 mb-5'>
-                    {canEdit && <SimpleButton buttonText={"Add Option"} onClick={handleAddOption}/>}
+                <div className='w-1/3 mb-5 flex'>
+                    {canEdit && <OutlinedButton buttonText={"Add Option"} onClick={handleAddOption}/>}
                     {!canEdit && <SimpleButton buttonText={"Edit"} onClick={() => setEditStatus(true)}/>}
                     {canEdit && <SimpleButton buttonText={"Save"} onClick={() => setEditStatus(false)}/>}
                 </div>    

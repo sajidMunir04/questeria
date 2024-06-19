@@ -26,11 +26,10 @@ function App() {
   return (<div className='flex w-full h-full bg-slate-100'>
     <NavSection onDashboardButtonClick={handleDashboardButton}
     onQuizzesButtonClick={handleQuizzesButton} onCreateQuizButtonClick={handleCreateQuizButton} selectedView={selectedView}/>
-    <div className='flex flex-col w-4/5 h-max' >
+    <div className='flex flex-col w-4/5 h-full' >
     {<>
       {selectedView === SelectedView.Dashboard && <DashboardHeader/>}
       {selectedView === SelectedView.Quizzes && <DashboardHeader/>}
-      {selectedView === SelectedView.CreateQuiz && <DashboardHeader/>}
     </>}
     {<>
     {selectedView === SelectedView.Dashboard && <Dashboard/>}

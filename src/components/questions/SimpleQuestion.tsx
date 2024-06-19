@@ -3,6 +3,7 @@ import AnswerInputField from "../common/AnswerInputField";
 import QuestionInputField from "../common/QuestionInputField";
 import { QuestionProps } from "./QuestionProps";
 import { SimpleQuestionData } from "../utils/SimpleQuestionData";
+import QuestionHeader from "../common/QuestionHeader";
 
 function SimpleQuestion(props : QuestionProps) {
 
@@ -18,8 +19,9 @@ function SimpleQuestion(props : QuestionProps) {
         props.handleDataChange(JSON.stringify(questionData),props.index);
     }
 
-    return (<div className='border-b-2'>
-            <p>{props.index + 1}-</p>
+    return (<div className='border-b-2 mb-8'>
+            <QuestionHeader questionIndex={props.index} onDeleteButtonClick={props.deleteQuestion}/>
+            <div className='p-8 bg-white'>
             <QuestionInputField defaultValue={questionText} onChange={(e: ChangeEvent<HTMLInputElement>) => {
             setQuestionText(e.target.value);
             handleDataChange();
@@ -28,6 +30,7 @@ function SimpleQuestion(props : QuestionProps) {
                 setAnswerText(e.target.value);
                 handleDataChange();
             }}/>
+            </div>
     </div>);
 }
 

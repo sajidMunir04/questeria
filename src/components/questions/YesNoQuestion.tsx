@@ -3,6 +3,7 @@ import QuestionInputField from "../common/QuestionInputField";
 import YesNoAnswerInputField from "../common/YesNoAnswerField";
 import { QuestionProps } from "./QuestionProps";
 import { YesNoQuestionData } from "../utils/YesNoQuestionData";
+import QuestionHeader from "../common/QuestionHeader";
 
 
 function YesNoQuestion(props : QuestionProps) {
@@ -21,8 +22,9 @@ function YesNoQuestion(props : QuestionProps) {
         props.handleDataChange(JSON.stringify(questionData),props.index);
     }
 
-    return (<div className='border-b-2'>
-            <p>{props.index + 1}-</p>
+    return (<div className='border-b-2 mb-8'>
+            <QuestionHeader questionIndex={props.index} onDeleteButtonClick={props.deleteQuestion}/>
+            <div className='p-8 bg-white'>
             <QuestionInputField defaultValue={questionText} onChange={(e: ChangeEvent<HTMLInputElement>) => {
             setQuestionText(e.target.value);
             handleDataChange();
@@ -40,6 +42,7 @@ function YesNoQuestion(props : QuestionProps) {
                 setAnswerToYes(false);
                 handleDataChange();
             }} />
+            </div>
             </div>
     </div>);
 }
