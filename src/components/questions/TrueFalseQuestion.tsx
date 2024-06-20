@@ -6,7 +6,7 @@ import { YesNoQuestionData } from "../utils/YesNoQuestionData";
 import QuestionHeader from "../common/QuestionHeader";
 
 
-function YesNoQuestion(props : QuestionProps) {
+function TrueFalseQuestion(props : QuestionProps) {
 
     const [questionText,setQuestionText] = useState('');
     const [answerIsNo,setAnswerToNo] = useState(false);
@@ -47,4 +47,4 @@ function YesNoQuestion(props : QuestionProps) {
     </div>);
 }
 
-export default YesNoQuestion;
+export default TrueFalseQuestion;

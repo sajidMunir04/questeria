@@ -52,10 +52,19 @@ function MultipleChoiceQuestion(props : QuestionProps) {
         <QuestionInputField canEdit={canEdit} defaultValue={question} onChange={handleQuestionInput}/>
         <div className='m-auto w-full flex-col flex justify-start items-start'>
                 {answers.map((item,index) => <MCQAnswerInputField onClick={() => setCorrectAnswerIndex(index)} key={index} defaultValue={item} isCorrectAnswer={correctAnswerIndex === index} canEdit={canEdit} onDelete={() => handleOptionDelete(index)}/>)}
-                <div className='w-1/3 mb-5 flex'>
-                    {canEdit && <OutlinedButton buttonText={"Add Option"} onClick={handleAddOption}/>}
-                    {!canEdit && <SimpleButton buttonText={"Edit"} onClick={() => setEditStatus(true)}/>}
-                    {canEdit && <SimpleButton buttonText={"Save"} onClick={() => setEditStatus(false)}/>}
+                <div className='mb-5 flex w-full'>
+                    {canEdit && 
+                    <div className='w-1/6 ml-4'>
+                    <OutlinedButton buttonText={"Add Option"} onClick={handleAddOption}/>
+                    </div>}
+                    {!canEdit && 
+                    <div className='w-1/6 ml-4'>
+                    <SimpleButton buttonText={"Edit"} onClick={() => setEditStatus(true)}/>
+                    </div>}
+                    {canEdit && 
+                    <div className='w-1/6 ml-4'>
+                    <SimpleButton buttonText={"Save"} onClick={() => setEditStatus(false)}/>
+                    </div>}
                 </div>    
         </div>
         </div>

@@ -3,8 +3,9 @@ import { multipleChoiceQuestionAlias, saveFormDataURL, simpleQuestionAlias, yesN
 import SimpleButton from "../common/SimpleButton";
 import MultipleChoiceQuestion from "../questions/MultipleChoiceQuestion";
 import { QuestionsType } from "../utils/questions";
-import YesNoQuestion from "../questions/YesNoQuestion";
+import YesNoQuestion from "../questions/TrueFalseQuestion";
 import SimpleQuestion from "../questions/SimpleQuestion";
+import axios from "axios";
 
 
 function CreateQuiz() {
@@ -54,14 +55,8 @@ function CreateQuiz() {
     const handleCreateForm = async() => {
         let mergedData = '';
         questionsData.forEach((item) => mergedData += item);
-        console.log(mergedData);
-        const response = await fetch(saveFormDataURL,{
-            method: "POST",
-            body: mergedData
-        })
+        const response = await axios.post(saveFormDataURL,mergedData);
         console.log(response);
-        const result = await response.json();
-        console.log(result);
     }
 
     return (<div className='mt-1 w-full p-10 h-full overflow-hidden'>
