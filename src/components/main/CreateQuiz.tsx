@@ -3,9 +3,13 @@ import { multipleChoiceQuestionAlias, saveFormDataURL, simpleQuestionAlias, yesN
 import SimpleButton from "../common/SimpleButton";
 import MultipleChoiceQuestion from "../questions/MultipleChoiceQuestion";
 import { QuestionsType } from "../utils/questions";
-import YesNoQuestion from "../questions/TrueFalseQuestion";
+import TrueFalseQuestion from "../questions/TrueFalseQuestion";
 import SimpleQuestion from "../questions/SimpleQuestion";
 import axios from "axios";
+import FillBlanksQuestion from "../questions/FillBlanksQuestion";
+import DragAndDropQuestion from "../questions/DragAndDropQuestion";
+import SelectOptionsQuestion from "../questions/SelectOptionsQuestion";
+import MatchingQuestion from "../questions/MatchingQuestion";
 
 
 function CreateQuiz() {
@@ -23,7 +27,7 @@ function CreateQuiz() {
     }
 
     const handleYesNoQuestionButton = () => {
-        const questions = [...quizQuestions,QuestionsType.YesNoQuestion];
+        const questions = [...quizQuestions,QuestionsType.TrueFalseQuestion];
         const questionData = [...questionsData,''];
         setQuestionsData(questionData);
         setQuizQuestions(questions);
@@ -38,6 +42,39 @@ function CreateQuiz() {
         setQuizQuestions(questions);
         setQuestionAddStatus(false);
     }
+
+    const handleFillBlanksQuestion = () => {
+        const questions = [...quizQuestions,QuestionsType.FillBlanksQuestion];
+        const questionData = [...questionsData,''];
+        setQuestionsData(questionData);
+        setQuizQuestions(questions);
+        setQuestionAddStatus(false);
+    }
+
+    const handleDragAndDropQuestion = () => {
+        const questions = [...quizQuestions,QuestionsType.DragAndDropQuestion];
+        const questionData = [...questionsData,''];
+        setQuestionsData(questionData);
+        setQuizQuestions(questions);
+        setQuestionAddStatus(false);
+    }
+
+    const handleMatchingQuestion = () => {
+        const questions = [...quizQuestions,QuestionsType.MatchingQuestion];
+        const questionData = [...questionsData,''];
+        setQuestionsData(questionData);
+        setQuizQuestions(questions);
+        setQuestionAddStatus(false);
+    }
+
+    const handleSelectOptionsQuestion = () => {
+        const questions = [...quizQuestions,QuestionsType.SelectOptionsQuestion];
+        const questionData = [...questionsData,''];
+        setQuestionsData(questionData);
+        setQuizQuestions(questions);
+        setQuestionAddStatus(false);
+    }
+
 
     const handleQuestionDataChange = (newQuestionData: string,index : number) => {
         const newData = questionsData;
@@ -74,8 +111,8 @@ function CreateQuiz() {
 
                     }} canEdit={false} handleDataChange={handleQuestionDataChange}/>
                 }
-                else if (item === QuestionsType.YesNoQuestion) {
-                    return <YesNoQuestion canEdit={false} deleteQuestion={() => {
+                else if (item === QuestionsType.TrueFalseQuestion) {
+                    return <TrueFalseQuestion canEdit={false} deleteQuestion={() => {
                         const questions = questionsData.filter((question,questionIndex) => questionIndex !== index);
                         setQuestionsData(questions);
 
@@ -94,6 +131,46 @@ function CreateQuiz() {
 
                     }} canEdit={false} index={index} handleDataChange={handleQuestionDataChange}/>
                 }
+                else if (item === QuestionsType.FillBlanksQuestion) {
+                    return <FillBlanksQuestion deleteQuestion={() => {
+                        const questions = questionsData.filter((question,questionIndex) => questionIndex !== index);
+                        setQuestionsData(questions);
+
+                        const questionTypes = quizQuestions.filter((question,questionIndex) => questionIndex !== index);
+                        setQuizQuestions(questionTypes);
+
+                    }} canEdit={false} index={index} handleDataChange={handleQuestionDataChange}/>
+                }
+                else if (item === QuestionsType.DragAndDropQuestion) {
+                    return <DragAndDropQuestion deleteQuestion={() => {
+                        const questions = questionsData.filter((question,questionIndex) => questionIndex !== index);
+                        setQuestionsData(questions);
+
+                        const questionTypes = quizQuestions.filter((question,questionIndex) => questionIndex !== index);
+                        setQuizQuestions(questionTypes);
+
+                    }} canEdit={false} index={index} handleDataChange={handleQuestionDataChange}/>
+                }
+                else if (item === QuestionsType.SelectOptionsQuestion) {
+                    return <SelectOptionsQuestion deleteQuestion={() => {
+                        const questions = questionsData.filter((question,questionIndex) => questionIndex !== index);
+                        setQuestionsData(questions);
+
+                        const questionTypes = quizQuestions.filter((question,questionIndex) => questionIndex !== index);
+                        setQuizQuestions(questionTypes);
+
+                    }} canEdit={false} index={index} handleDataChange={handleQuestionDataChange}/>
+                }
+                else if (item === QuestionsType.MatchingQuestion) {
+                    return <MatchingQuestion deleteQuestion={() => {
+                        const questions = questionsData.filter((question,questionIndex) => questionIndex !== index);
+                        setQuestionsData(questions);
+
+                        const questionTypes = quizQuestions.filter((question,questionIndex) => questionIndex !== index);
+                        setQuizQuestions(questionTypes);
+
+                    }} canEdit={false} index={index} handleDataChange={handleQuestionDataChange}/>
+                }
             })}
             <div className='mt-8 flex'>
                 <p className='p-4 bg-white mb-5 h-min cursor-pointer' onClick={() => setQuestionAddStatus(!addingQuestion)}>Add Question &#10148;</p>
@@ -101,6 +178,10 @@ function CreateQuiz() {
                     <p className='p-4 border-y-1 cursor-pointer' onClick={handleMultipleChoiceQuestionButton}>Multiple Choice Question</p>
                     <p className='p-4 border-y-1 cursor-pointer' onClick={handleYesNoQuestionButton}>Yes No Question</p>
                     <p className='p-4 border-y-1 cursor-pointer' onClick={handleSimpleQuestion}>Simple Question</p>
+                    <p className='p-4 border-y-1 cursor-pointer' onClick={handleFillBlanksQuestion}>Fill Blanks Question</p>
+                    <p className='p-4 border-y-1 cursor-pointer' onClick={handleDragAndDropQuestion}>Drag and Drop Question</p>
+                    <p className='p-4 border-y-1 cursor-pointer' onClick={handleMatchingQuestion}>Matching Question</p>
+                    <p className='p-4 border-y-1 cursor-pointer' onClick={handleSelectOptionsQuestion}>Select Options Question</p>                   
                 </div>}
             </div>
             </div>
