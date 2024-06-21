@@ -5,8 +5,9 @@ import OutlinedButton from "../common/OutlinedButton";
 
 
 function DragAndDropQuestion(props : QuestionProps) {
-    return (<div>
-        <QuestionHeader questionIndex={props.index} onDeleteButtonClick={props.deleteQuestion}/>
+    return (<div>     
+        <QuestionHeader questionIndex={props.index} onDeleteButtonClick={props.deleteQuestion} 
+        onMoveDownButtonClick={props.moveDown} onMoveUpButtonClick={props.moveUp}/>
     </div>);
 }
 

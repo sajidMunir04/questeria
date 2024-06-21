@@ -96,80 +96,77 @@ function CreateQuiz() {
         console.log(response);
     }
 
+    const handleDeleteQuestion = (index : number) => {
+        const questions = questionsData.filter((question,questionIndex) => questionIndex !== index);
+        setQuestionsData(questions);
+
+        const questionTypes = quizQuestions.filter((question,questionIndex) => questionIndex !== index);
+        setQuizQuestions(questionTypes);
+    }
+
+    const handleMoveUpQuestion = (index : number) => {
+
+        if (index <= 0)
+            return;
+
+        const questions = questionsData;
+        const temp = questions[index];
+        questions[index] = questions[index - 1];
+        questions[index -1] = temp;
+        setQuestionsData(questions);
+
+        const questionTypes = quizQuestions;
+        const typeTemp = questionTypes[index];
+        questionTypes[index] = questionTypes[index -1];
+        questionTypes[index -1] = typeTemp;
+        setQuizQuestions(questionTypes);
+    }
+
+    const handleMoveDownQuestion = (index : number) => {
+        if (index >= questionsData.length)
+            return;
+
+        const questions = questionsData;
+        const temp = questions[index];
+        questions[index] = questions[index - 1];
+        setQuestionsData(questions);
+
+        const questionTypes = quizQuestions;
+        setQuizQuestions(questionTypes);
+    }
+
     return (<div className='mt-1 w-full p-10 h-full overflow-hidden'>
         <h3 className='font-poppinsBold text-36px'>Create New Quiz</h3>
         <div className='h-5/6 overflow-hidden'>
             <div className='h-full overflow-scroll'>
             {quizQuestions.map(function (item: QuestionsType,index: number){
                 if (item === QuestionsType.MultipleChoiceQuestion) {
-                    return <MultipleChoiceQuestion index={index} deleteQuestion={() => {
-                        const questions = questionsData.filter((question,questionIndex) => questionIndex !== index);
-                        setQuestionsData(questions);
-
-                        const questionTypes = quizQuestions.filter((question,questionIndex) => questionIndex !== index);
-                        setQuizQuestions(questionTypes);
-
-                    }} canEdit={false} handleDataChange={handleQuestionDataChange}/>
+                    return <MultipleChoiceQuestion index={index} deleteQuestion={() => handleDeleteQuestion(index)} 
+                    canEdit={false} moveDown={() => handleMoveDownQuestion(index)} moveUp={() => handleMoveUpQuestion(index)} handleDataChange={handleQuestionDataChange}/>
                 }
                 else if (item === QuestionsType.TrueFalseQuestion) {
-                    return <TrueFalseQuestion canEdit={false} deleteQuestion={() => {
-                        const questions = questionsData.filter((question,questionIndex) => questionIndex !== index);
-                        setQuestionsData(questions);
-
-                        const questionTypes = quizQuestions.filter((question,questionIndex) => questionIndex !== index);
-                        setQuizQuestions(questionTypes);
-
-                    }} index={index} handleDataChange={handleQuestionDataChange}/>
+                    return <TrueFalseQuestion canEdit={false} deleteQuestion={() => handleDeleteQuestion(index)}
+                    moveDown={() => handleMoveDownQuestion(index)} moveUp={() => handleMoveUpQuestion(index)} index={index} handleDataChange={handleQuestionDataChange}/>
                 } 
                 else if (item === QuestionsType.SimpleQuestion) {
-                    return <SimpleQuestion deleteQuestion={() => {
-                        const questions = questionsData.filter((question,questionIndex) => questionIndex !== index);
-                        setQuestionsData(questions);
-
-                        const questionTypes = quizQuestions.filter((question,questionIndex) => questionIndex !== index);
-                        setQuizQuestions(questionTypes);
-
-                    }} canEdit={false} index={index} handleDataChange={handleQuestionDataChange}/>
+                    return <SimpleQuestion deleteQuestion={() => handleDeleteQuestion(index)}  canEdit={false} 
+                    moveDown={() => handleMoveDownQuestion(index)} moveUp={() => handleMoveUpQuestion(index)} index={index} handleDataChange={handleQuestionDataChange}/>
                 }
                 else if (item === QuestionsType.FillBlanksQuestion) {
-                    return <FillBlanksQuestion deleteQuestion={() => {
-                        const questions = questionsData.filter((question,questionIndex) => questionIndex !== index);
-                        setQuestionsData(questions);
-
-                        const questionTypes = quizQuestions.filter((question,questionIndex) => questionIndex !== index);
-                        setQuizQuestions(questionTypes);
-
-                    }} canEdit={false} index={index} handleDataChange={handleQuestionDataChange}/>
+                    return <FillBlanksQuestion deleteQuestion={() => handleDeleteQuestion(index)} canEdit={false} 
+                    moveDown={() => handleMoveDownQuestion(index)} moveUp={() => handleMoveUpQuestion(index)} index={index} handleDataChange={handleQuestionDataChange}/>
                 }
                 else if (item === QuestionsType.DragAndDropQuestion) {
-                    return <DragAndDropQuestion deleteQuestion={() => {
-                        const questions = questionsData.filter((question,questionIndex) => questionIndex !== index);
-                        setQuestionsData(questions);
-
-                        const questionTypes = quizQuestions.filter((question,questionIndex) => questionIndex !== index);
-                        setQuizQuestions(questionTypes);
-
-                    }} canEdit={false} index={index} handleDataChange={handleQuestionDataChange}/>
+                    return <DragAndDropQuestion deleteQuestion={() => handleDeleteQuestion(index)} canEdit={false} 
+                    moveDown={() => handleMoveDownQuestion(index)} moveUp={() => handleMoveUpQuestion(index)} index={index} handleDataChange={handleQuestionDataChange}/>
                 }
                 else if (item === QuestionsType.SelectOptionsQuestion) {
-                    return <SelectOptionsQuestion deleteQuestion={() => {
-                        const questions = questionsData.filter((question,questionIndex) => questionIndex !== index);
-                        setQuestionsData(questions);
-
-                        const questionTypes = quizQuestions.filter((question,questionIndex) => questionIndex !== index);
-                        setQuizQuestions(questionTypes);
-
-                    }} canEdit={false} index={index} handleDataChange={handleQuestionDataChange}/>
+                    return <SelectOptionsQuestion deleteQuestion={() => handleDeleteQuestion(index)} canEdit={false} 
+                    moveDown={() => handleMoveDownQuestion(index)} moveUp={() => handleMoveUpQuestion(index)} index={index} handleDataChange={handleQuestionDataChange}/>
                 }
                 else if (item === QuestionsType.MatchingQuestion) {
-                    return <MatchingQuestion deleteQuestion={() => {
-                        const questions = questionsData.filter((question,questionIndex) => questionIndex !== index);
-                        setQuestionsData(questions);
-
-                        const questionTypes = quizQuestions.filter((question,questionIndex) => questionIndex !== index);
-                        setQuizQuestions(questionTypes);
-
-                    }} canEdit={false} index={index} handleDataChange={handleQuestionDataChange}/>
+                    return <MatchingQuestion deleteQuestion={() => handleDeleteQuestion(index)} canEdit={false} 
+                    moveDown={() => handleMoveDownQuestion(index)} moveUp={() => handleMoveUpQuestion(index)} index={index} handleDataChange={handleQuestionDataChange}/>
                 }
             })}
             <div className='mt-8 flex'>

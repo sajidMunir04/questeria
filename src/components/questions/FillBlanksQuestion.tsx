@@ -3,6 +3,7 @@ import QuestionHeader from "../common/QuestionHeader";
 import { QuestionProps } from "./QuestionProps";
 import OutlinedButton from "../common/OutlinedButton";
 import QuestionInputField from "../common/QuestionInputField";
+import AnswerInputField from "../common/AnswerInputField";
 
 export const blankLine : string = '____________________';
 
@@ -10,9 +11,11 @@ export const blankLine : string = '____________________';
 function FillBlanksQuestion(props : QuestionProps) {
 
     const [textSections,setTextSections] = useState<string[]>([' ',blankLine]);
+    const [answerOptions,setAnswerOptions] = useState<string[]>([]);
 
     return (<div>
-        <QuestionHeader questionIndex={props.index} onDeleteButtonClick={props.deleteQuestion} />
+        <QuestionHeader questionIndex={props.index} onDeleteButtonClick={props.deleteQuestion} 
+        onMoveDownButtonClick={props.moveDown} onMoveUpButtonClick={props.moveUp}/>
         <div className='bg-white p-8'>
             <div className='flex flex-wrap'>
             {textSections.map(function(item) {
@@ -25,13 +28,19 @@ function FillBlanksQuestion(props : QuestionProps) {
             })}
             {<div>
                 <OutlinedButton buttonText={"Add Blank"} onClick={() => {
-                    const newSections = [...textSections,blankLine,' '];
+                    const newSections = [...textSections,blankLine];
+                    setTextSections(newSections);
+                }}/>
+              </div>}
+              {<div>
+                <OutlinedButton buttonText={"Add Text"} onClick={() => {
+                    const newSections = [...textSections,' '];
                     setTextSections(newSections);
                 }}/>
               </div>}
             </div>
             <div>
-                
+                {answerOptions.map((item) => )}
             </div>
         </div>
     </div>);

@@ -23,7 +23,8 @@ function TrueFalseQuestion(props : QuestionProps) {
     }
 
     return (<div className='border-b-2 mb-8'>
-            <QuestionHeader questionIndex={props.index} onDeleteButtonClick={props.deleteQuestion}/>
+        <QuestionHeader questionIndex={props.index} onDeleteButtonClick={props.deleteQuestion} 
+        onMoveDownButtonClick={props.moveDown} onMoveUpButtonClick={props.moveUp}/>
             <div className='p-8 bg-white'>
             <QuestionInputField defaultValue={questionText} onChange={(e: ChangeEvent<HTMLInputElement>) => {
             setQuestionText(e.target.value);

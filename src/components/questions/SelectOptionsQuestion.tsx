@@ -11,8 +11,9 @@ function SelectOptionsQuestion(props : QuestionProps) {
     const [questionSections,setQuestionSections] = useState<string[]>([' ',selectOption]);
     const [selectOptions,setSelectOptions] = useState<string[][]>([['Any']]);
 
-    return (<div>
-        <QuestionHeader questionIndex={props.index} onDeleteButtonClick={props.deleteQuestion}/>
+    return (<div>       
+        <QuestionHeader questionIndex={props.index} onDeleteButtonClick={props.deleteQuestion} 
+        onMoveDownButtonClick={props.moveDown} onMoveUpButtonClick={props.moveUp}/>
         <div className='bg-white p-8'>
             <div className='flex'>
                 {questionSections.map(function (item,index) {

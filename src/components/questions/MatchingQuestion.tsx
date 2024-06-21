@@ -12,7 +12,8 @@ function MatchingQuestion(props : QuestionProps) {
     const [secondOptions,setSecondOptions] = useState<string[]>(['']);
 
     return (<div>
-        <QuestionHeader questionIndex={props.index} onDeleteButtonClick={props.deleteQuestion}/>
+        <QuestionHeader questionIndex={props.index} onDeleteButtonClick={props.deleteQuestion} 
+        onMoveDownButtonClick={props.moveDown} onMoveUpButtonClick={props.moveUp}/>
         <div className='p-8 bg-white'>
             <QuestionInputField defaultValue={questionText} canEdit={false}/>
             <div className='flex justify-between'>
