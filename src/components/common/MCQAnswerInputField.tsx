@@ -10,7 +10,7 @@ interface Props {
 
 
 function MCQAnswerInputField(props : Props) {
-    return (
+    return ( 
     <div className='w-full mb-3 flex items-center justify-between'>
     <input className='bg-slate-100 h-10 border-2 rounded-s-md border-slate-300 w-1/2' type='text' defaultValue={props.defaultValue} 
     onChange={props.onChange}/>
