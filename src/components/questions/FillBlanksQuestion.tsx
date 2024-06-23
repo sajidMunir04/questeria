@@ -23,16 +23,16 @@ function FillBlanksQuestion(props : QuestionProps) {
                     return <div className='w-max'><QuestionInputField defaultValue={item} canEdit={false}/></div>
                 }
                 else {
-                    return <div className='relative w-auto'><p className='absolute top-4'>{item}</p><p className='z-0'>{item}</p></div>
+                    return <div className='relative w-auto'><p className='absolute top-4'>{item}</p><p className='-z-1'>{item}</p></div>
                 }
             })}
-            {<div>
+            {textSections[textSections.length - 1] !== blankLine && <div>
                 <OutlinedButton buttonText={"Add Blank"} onClick={() => {
                     const newSections = [...textSections,blankLine];
                     setTextSections(newSections);
                 }}/>
               </div>}
-              {<div>
+              {textSections[textSections.length - 1] === blankLine && <div>
                 <OutlinedButton buttonText={"Add Text"} onClick={() => {
                     const newSections = [...textSections,' '];
                     setTextSections(newSections);
@@ -40,7 +40,7 @@ function FillBlanksQuestion(props : QuestionProps) {
               </div>}
             </div>
             <div>
-                {answerOptions.map((item) => )}
+                {answerOptions.map((item) => <AnswerInputField defaultValue={item}/>)}
             </div>
         </div>
     </div>);

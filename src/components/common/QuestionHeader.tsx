@@ -12,8 +12,8 @@ function QuestionHeader(props : Props) {
         <p className='text-white font-poppinsBold font-24'>Question No. {props.questionIndex + 1}</p>
         <div>
         <button onClick={props.onDeleteButtonClick}>Delete</button>
-        <button onClick={props.onDeleteButtonClick}>Move Up</button>
-        <button onClick={props.onDeleteButtonClick}>Move Down</button>
+        <button onClick={props.onMoveUpButtonClick}>Move Up</button>
+        <button onClick={props.onMoveDownButtonClick}>Move Down</button>
         </div>
     </div>);
 }

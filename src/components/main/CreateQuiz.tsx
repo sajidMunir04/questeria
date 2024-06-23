@@ -106,33 +106,33 @@ function CreateQuiz() {
 
     const handleMoveUpQuestion = (index : number) => {
 
-        if (index <= 0)
+        if (index === 0)
             return;
 
-        const questions = questionsData;
-        const temp = questions[index];
-        questions[index] = questions[index - 1];
-        questions[index -1] = temp;
-        setQuestionsData(questions);
+        const questionData = questionsData[index];
+        let questions = questionsData.filter((item,itemIndex) => itemIndex !== index);
+        questions.splice(index - 1,0,questionData);
+        setQuestionsData([...questions]);
 
-        const questionTypes = quizQuestions;
-        const typeTemp = questionTypes[index];
-        questionTypes[index] = questionTypes[index -1];
-        questionTypes[index -1] = typeTemp;
-        setQuizQuestions(questionTypes);
+        const questionTypeData = quizQuestions[index];
+        let qTypes = quizQuestions.filter((item,itemIndex) => itemIndex !== index);
+        qTypes.splice(index - 1,0,questionTypeData);
+        setQuizQuestions([...qTypes]);
     }
 
     const handleMoveDownQuestion = (index : number) => {
-        if (index >= questionsData.length)
+        if (index === questionsData.length - 1)
             return;
 
-        const questions = questionsData;
-        const temp = questions[index];
-        questions[index] = questions[index - 1];
-        setQuestionsData(questions);
+        const questionData = questionsData[index];
+        let questions = questionsData.filter((item,itemIndex) => itemIndex !== index);
+        questions.splice(index + 1,0,questionData);
+        setQuestionsData([...questions]);
 
-        const questionTypes = quizQuestions;
-        setQuizQuestions(questionTypes);
+        const questionTypeData = quizQuestions[index];
+        let qTypes = quizQuestions.filter((item,itemIndex) => itemIndex !== index);
+        qTypes.splice(index + 1,0,questionTypeData);
+        setQuizQuestions([...qTypes]);
     }
 
     return (<div className='mt-1 w-full p-10 h-full overflow-hidden'>

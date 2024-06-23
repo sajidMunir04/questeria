@@ -17,7 +17,6 @@ function MultipleChoiceQuestion(props : QuestionProps) {
 
     const handleQuestionInput = (e: ChangeEvent<HTMLInputElement>) => {
         setQuestion(e.target.value);
-        handleDataChange();
     }
 
     const handleSave = () => {
@@ -28,7 +27,6 @@ function MultipleChoiceQuestion(props : QuestionProps) {
         const answerOption : string = ' ';
         const newAnswers  = [...answers,answerOption];
         setAnswers(newAnswers);
-        handleDataChange();
     }
 
     const handleDataChange = () => {
