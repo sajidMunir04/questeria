@@ -31,13 +31,13 @@ function TrueFalseQuestion(props : QuestionProps) {
             handleDataChange();
         } } canEdit={false}/>
             <div className='mb-5'>
-            <YesNoAnswerInputField value={'Yes'} isCorrect={answerIsYes} 
+            <YesNoAnswerInputField value={'True'} isCorrect={answerIsYes} 
             onClick={() => {
                 setAnswerToNo(false);
                 setAnswerToYes(true);
                 handleDataChange();
             }} />
-            <YesNoAnswerInputField value={'No'} isCorrect={answerIsNo} 
+            <YesNoAnswerInputField value={'False'} isCorrect={answerIsNo} 
             onClick={() => {
                 setAnswerToNo(true);
                 setAnswerToYes(false);

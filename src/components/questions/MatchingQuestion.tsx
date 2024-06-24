@@ -11,7 +11,7 @@ function MatchingQuestion(props : QuestionProps) {
     const [firstOptions,setFirstOptions] = useState<string[]>(['']);
     const [secondOptions,setSecondOptions] = useState<string[]>(['']);
 
-    return (<div>
+    return (<div className='mb-8'>
         <QuestionHeader questionIndex={props.index} onDeleteButtonClick={props.deleteQuestion} 
         onMoveDownButtonClick={props.moveDown} onMoveUpButtonClick={props.moveUp}/>
         <div className='p-8 bg-white'>

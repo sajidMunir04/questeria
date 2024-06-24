@@ -4,6 +4,7 @@ import { QuestionProps } from "./QuestionProps";
 import OutlinedButton from "../common/OutlinedButton";
 import QuestionInputField from "../common/QuestionInputField";
 import AnswerInputField from "../common/AnswerInputField";
+import SimpleButton from "../common/SimpleButton";
 
 export const blankLine : string = '____________________';
 
@@ -13,17 +14,17 @@ function FillBlanksQuestion(props : QuestionProps) {
     const [textSections,setTextSections] = useState<string[]>([' ',blankLine]);
     const [answerOptions,setAnswerOptions] = useState<string[]>([]);
 
-    return (<div>
+    return (<div className='mb-8'>
         <QuestionHeader questionIndex={props.index} onDeleteButtonClick={props.deleteQuestion} 
         onMoveDownButtonClick={props.moveDown} onMoveUpButtonClick={props.moveUp}/>
         <div className='bg-white p-8'>
             <div className='flex flex-wrap'>
             {textSections.map(function(item) {
                 if (item !== blankLine) {
-                    return <div className='w-max'><QuestionInputField defaultValue={item} canEdit={false}/></div>
+                    return <div className='h-full'><QuestionInputField defaultValue={item} canEdit={false}/></div>
                 }
                 else {
-                    return <div className='relative w-auto'><p className='absolute top-4'>{item}</p><p className='-z-1'>{item}</p></div>
+                    return <div className='relative w-auto h-10 flex flex-col justify-end'><p className=''>{item}</p></div>
                 }
             })}
             {textSections[textSections.length - 1] !== blankLine && <div>

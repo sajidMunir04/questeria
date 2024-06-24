@@ -12,6 +12,10 @@ export default {
       fontFamily :{
         poppinsMedium: ['Poppins-Medium', 'sans-serif'],
         poppinsBold: ['Poppins-Bold', 'sans-serif']
+      },
+      zIndex: {
+        '-1': '-1',
+        '-3': '-3'
       }
     },
   },

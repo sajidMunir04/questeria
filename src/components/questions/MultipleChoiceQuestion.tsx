@@ -47,7 +47,7 @@ function MultipleChoiceQuestion(props : QuestionProps) {
     return (<div className='flex flex-col mb-8 border-b-2 bg-white rounded-2xl'>
         <QuestionHeader questionIndex={props.index} onDeleteButtonClick={props.deleteQuestion} 
         onMoveDownButtonClick={props.moveDown} onMoveUpButtonClick={props.moveUp}/>
-        <div className='flex flex-col mb-8 border-b-2 p-8'>
+        <div className='flex flex-col mb-8 p-8'>
         <QuestionInputField canEdit={canEdit} defaultValue={question} onChange={handleQuestionInput}/>
         <div className='m-auto w-full flex-col flex justify-start items-start'>
                 {answers.map((item,index) => <MCQAnswerInputField onClick={() => setCorrectAnswerIndex(index)} key={index} defaultValue={item} isCorrectAnswer={correctAnswerIndex === index} canEdit={canEdit} onDelete={() => handleOptionDelete(index)}/>)}
