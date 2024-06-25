@@ -5,5 +5,7 @@ export enum QuestionsType {
     FillBlanksQuestion,
     SelectOptionsQuestion,
     DragAndDropQuestion,
-    MatchingQuestion
+    MatchingQuestion,
+    CorrectOrderQuestion,
+    OddOneQuestion
 }

@@ -10,6 +10,8 @@ import FillBlanksQuestion from "../questions/FillBlanksQuestion";
 import DragAndDropQuestion from "../questions/DragAndDropQuestion";
 import SelectOptionsQuestion from "../questions/SelectOptionsQuestion";
 import MatchingQuestion from "../questions/MatchingQuestion";
+import OddOneQuestion from "../questions/OddOneQuestion";
+import CorrectOrderQuestion from "../questions/CorrectOrder";
 
 
 function CreateQuiz() {
@@ -75,6 +77,21 @@ function CreateQuiz() {
         setQuestionAddStatus(false);
     }
 
+    const handleOddOneQuestion = () => {
+        const questions = [...quizQuestions,QuestionsType.OddOneQuestion];
+        const questionData = [...questionsData,''];
+        setQuestionsData(questionData);
+        setQuizQuestions(questions);
+        setQuestionAddStatus(false);
+    }
+
+    const handleCorrectOrderQuestion = () => {
+        const questions = [...quizQuestions,QuestionsType.CorrectOrderQuestion];
+        const questionData = [...questionsData,''];
+        setQuestionsData(questionData);
+        setQuizQuestions(questions);
+        setQuestionAddStatus(false);
+    }
 
     const handleQuestionDataChange = (newQuestionData: string,index : number) => {
         const newData = questionsData;
@@ -168,6 +185,14 @@ function CreateQuiz() {
                     return <MatchingQuestion deleteQuestion={() => handleDeleteQuestion(index)} canEdit={false} 
                     moveDown={() => handleMoveDownQuestion(index)} moveUp={() => handleMoveUpQuestion(index)} index={index} handleDataChange={handleQuestionDataChange}/>
                 }
+                else if (item === QuestionsType.OddOneQuestion) {
+                    return <OddOneQuestion deleteQuestion={() => handleDeleteQuestion(index)} canEdit={false} 
+                    moveDown={() => handleMoveDownQuestion(index)} moveUp={() => handleMoveUpQuestion(index)} index={index} handleDataChange={handleQuestionDataChange}/>
+                }
+                else if (item === QuestionsType.CorrectOrderQuestion) {
+                    return <CorrectOrderQuestion deleteQuestion={() => handleDeleteQuestion(index)} canEdit={false} 
+                    moveDown={() => handleMoveDownQuestion(index)} moveUp={() => handleMoveUpQuestion(index)} index={index} handleDataChange={handleQuestionDataChange}/>
+                }
             })}
             <div className='mt-8 flex'>
                 <p className='p-4 bg-white mb-5 h-min cursor-pointer' onClick={() => setQuestionAddStatus(!addingQuestion)}>Add Question &#10148;</p>
@@ -178,7 +203,9 @@ function CreateQuiz() {
                     <p className='p-4 border-y-1 cursor-pointer' onClick={handleFillBlanksQuestion}>Fill Blanks Question</p>
                     <p className='p-4 border-y-1 cursor-pointer' onClick={handleDragAndDropQuestion}>Drag and Drop Question</p>
                     <p className='p-4 border-y-1 cursor-pointer' onClick={handleMatchingQuestion}>Matching Question</p>
-                    <p className='p-4 border-y-1 cursor-pointer' onClick={handleSelectOptionsQuestion}>Select Options Question</p>                   
+                    <p className='p-4 border-y-1 cursor-pointer' onClick={handleSelectOptionsQuestion}>Select Options Question</p> 
+                    <p className='p-4 border-y-1 cursor-pointer' onClick={handleOddOneQuestion}>Odd One Out Question</p>    
+                    <p className='p-4 border-y-1 cursor-pointer' onClick={handleCorrectOrderQuestion}>Correct Order Question</p>                      
                 </div>}
             </div>
             </div>
