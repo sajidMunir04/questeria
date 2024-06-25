@@ -17,10 +17,13 @@ function MatchingQuestion(props : QuestionProps) {
         <div className='p-8 bg-white'>
             <QuestionInputField defaultValue={questionText} canEdit={false}/>
             <div className='flex justify-between'>
-                <div className='flex flex-col'>
+                <div className='flex flex-col w-2/5'>
                     {firstOptions.map((item) => <AnswerInputField defaultValue={item}/>)}
                 </div>
-                <div className='flex flex-col'>
+                <div>
+                    {firstOptions.map((item) => <p className='p-0'>=</p>)}
+                </div>
+                <div className='flex flex-col w-2/5'>
                     {secondOptions.map((item) => <AnswerInputField defaultValue={item}/>)}
                 </div>
             </div>

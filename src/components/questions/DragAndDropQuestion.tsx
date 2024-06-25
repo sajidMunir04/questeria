@@ -26,15 +26,6 @@ function DragAndDropQuestion(props : QuestionProps) {
                     return <div className='relative w-auto h-10 flex flex-col justify-end'><p className=''>{item}</p></div>
                 }
             })}
-            {
-                <div>
-                    <SimpleButton buttonText={"Remove Last Section"} onClick={() => {
-                        const answersData = answerOptions;
-                        answersData.pop();
-                        setAnswerOptions([...answersData]);
-                    }}/>
-                    </div>
-            }
             {textSections[textSections.length - 1] !== blankLine && <div>
                 <OutlinedButton buttonText={"Add Blank"} onClick={() => {
                     const newSections = [...textSections,blankLine];
@@ -50,6 +41,12 @@ function DragAndDropQuestion(props : QuestionProps) {
             </div>
             <div>
                 {answerOptions.map((item) => <AnswerInputField defaultValue={item}/>)}
+            </div>
+            <div>
+                <OutlinedButton buttonText={"Add Answer Block"} onClick={() => {
+                    const newAnswerOptions = [...answerOptions,''];
+                    setAnswerOptions(newAnswerOptions);
+                }}/>
             </div>
         </div>
     </div>);
