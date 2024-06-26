@@ -16,7 +16,7 @@ function OddOneQuestion(props : QuestionProps) {
         onMoveDownButtonClick={props.moveDown}/>
         <div className='bg-white p-8'>
             <QuestionInputField defaultValue={questionText} canEdit={false}/>
-            <div>
+            <div className='w-1/3'>
                 {options.map((item) => <AnswerInputField defaultValue={item}/>)}
             </div>
             <div>
