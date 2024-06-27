@@ -11,7 +11,7 @@ import DragAndDropQuestion from "../questions/DragAndDropQuestion";
 import SelectOptionsQuestion from "../questions/SelectOptionsQuestion";
 import MatchingQuestion from "../questions/MatchingQuestion";
 import OddOneQuestion from "../questions/OddOneQuestion";
-import CorrectOrderQuestion from "../questions/CorrectOrder";
+import CorrectOrderQuestion from "../questions/CorrectOrderQuestion";
 
 
 function CreateQuiz() {
@@ -109,8 +109,12 @@ function CreateQuiz() {
     const handleCreateForm = async() => {
         let mergedData = '';
         questionsData.forEach((item) => mergedData += item);
-        const response = await axios.post(saveFormDataURL,mergedData);
-        console.log(response);
+        const response = await fetch(saveFormDataURL, {
+            method: "POST",
+            body: mergedData
+        })
+        const data = await response.json();
+        console.log(data);
     }
 
     const handleDeleteQuestion = (index : number) => {

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import OutlinedButton from "../common/OutlinedButton";
 import QuestionHeader from "../common/QuestionHeader";
 import { QuestionProps } from "./QuestionProps";
@@ -22,12 +22,16 @@ function SelectOptionsQuestion(props : QuestionProps) {
                 {questionSections.map(function (item,index) {
                     if (item !== selectOption) {
                         return (<div>
-                            <QuestionInputField defaultValue={item} canEdit={false}/>
-                            </div>);
+                                <QuestionInputField defaultValue={item} canEdit={false} onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                                            const sections = questionSections;
+                                            sections[index] = e.target.value;
+                                            setQuestionSections(sections);
+                                        }}/>
+                                </div>);
                     }
                     else{
                         return (<div className='flex flex-col justify-center border-2 m-1 text-center'>
-                            {selectOptions.length > index && selectOptions[index].map((optionItem) => <input className='bg-slate-100 mb-1 border-slate-300 w-full' defaultValue={'Empty'}/>)}
+                            {selectOptions.length > index && selectOptions[index].map((optionItem) => <input className='bg-slate-100 mb-1 border-slate-300 w-full' defaultValue={optionItem}/>)}
                             <SimpleButton buttonText={"Add Option"} onClick={() => {
                                 const modifiedSelectOptions = [...selectOptions[index],'-------'];
                                 const previousOptions = selectOptions.filter((item,itemIndex) => index !== itemIndex);

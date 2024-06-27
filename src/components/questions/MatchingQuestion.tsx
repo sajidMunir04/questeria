@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import QuestionHeader from "../common/QuestionHeader";
 import QuestionInputField from "../common/QuestionInputField";
 import { QuestionProps } from "./QuestionProps";
@@ -15,7 +15,9 @@ function MatchingQuestion(props : QuestionProps) {
         <QuestionHeader questionIndex={props.index} onDeleteButtonClick={props.deleteQuestion} 
         onMoveDownButtonClick={props.moveDown} onMoveUpButtonClick={props.moveUp}/>
         <div className='p-8 bg-white'>
-            <QuestionInputField defaultValue={questionText} canEdit={false}/>
+            <QuestionInputField defaultValue={questionText} canEdit={false} onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                        setQuestionText(e.target.value);
+                    }}/>
             <div className='flex justify-between'>
                 <div className='flex flex-col w-2/5'>
                     {firstOptions.map((item) => <AnswerInputField defaultValue={item}/>)}

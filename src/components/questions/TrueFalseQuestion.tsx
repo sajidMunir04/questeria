@@ -2,7 +2,7 @@ import { ChangeEvent, useState } from "react";
 import QuestionInputField from "../common/QuestionInputField";
 import YesNoAnswerInputField from "../common/YesNoAnswerField";
 import { QuestionProps } from "./QuestionProps";
-import { YesNoQuestionData } from "../utils/YesNoQuestionData";
+import { TrueFalseQuestionData } from "../utils/TrueFalseQuestionData";
 import QuestionHeader from "../common/QuestionHeader";
 
 
@@ -13,10 +13,8 @@ function TrueFalseQuestion(props : QuestionProps) {
     const [answerIsYes,setAnswerToYes] = useState(false);
 
     const handleDataChange = () => {
-        const questionData : YesNoQuestionData = {
-            questionText: questionText,
-            answerIsYes: answerIsYes,
-            answerIsNo: answerIsNo
+        const questionData : TrueFalseQuestionData = {
+            questionText: questionText
         }
 
         props.handleDataChange(JSON.stringify(questionData),props.index);

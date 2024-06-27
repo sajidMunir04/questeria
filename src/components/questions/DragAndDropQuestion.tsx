@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import QuestionHeader from "../common/QuestionHeader";
 import { QuestionProps } from "./QuestionProps";
 import OutlinedButton from "../common/OutlinedButton";
@@ -18,9 +18,13 @@ function DragAndDropQuestion(props : QuestionProps) {
         onMoveDownButtonClick={props.moveDown} onMoveUpButtonClick={props.moveUp}/>
                 <div className='bg-white p-8'>
             <div className='flex flex-wrap'>
-            {textSections.map(function(item) {
+            {textSections.map(function(item,index) {
                 if (item !== blankLine) {
-                    return <div className='h-full'><QuestionInputField defaultValue={item} canEdit={false}/></div>
+                    return <div className='h-full'><QuestionInputField defaultValue={item} canEdit={false} onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                        const sections = textSections;
+                        sections[index] = e.target.value;
+                        setTextSections(sections);
+                    }}/></div>
                 }
                 else {
                     return <div className='relative w-auto h-10 flex flex-col justify-end'><p className=''>{item}</p></div>
@@ -40,7 +44,7 @@ function DragAndDropQuestion(props : QuestionProps) {
               </div>}
             </div>
             <div>
-                {answerOptions.map((item) => <AnswerInputField defaultValue={item}/>)}
+                {answerOptions.map((item) => <div className='w-40'><AnswerInputField defaultValue={item}/></div>)}
             </div>
             <div>
                 <OutlinedButton buttonText={"Add Answer Block"} onClick={() => {

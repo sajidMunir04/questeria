@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import QuestionHeader from "../common/QuestionHeader";
 import { QuestionProps } from "./QuestionProps";
 import QuestionInputField from "../common/QuestionInputField";
@@ -15,7 +15,9 @@ function OddOneQuestion(props : QuestionProps) {
         <QuestionHeader questionIndex={0} onDeleteButtonClick={props.deleteQuestion} onMoveUpButtonClick={props.moveUp} 
         onMoveDownButtonClick={props.moveDown}/>
         <div className='bg-white p-8'>
-            <QuestionInputField defaultValue={questionText} canEdit={false}/>
+            <QuestionInputField defaultValue={questionText} canEdit={false} onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                        setQuestionText(e.target.value);
+                    }}/>
             <div className='w-1/3'>
                 {options.map((item) => <AnswerInputField defaultValue={item}/>)}
             </div>

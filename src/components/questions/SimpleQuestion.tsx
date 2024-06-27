@@ -8,12 +8,10 @@ import QuestionHeader from "../common/QuestionHeader";
 function SimpleQuestion(props : QuestionProps) {
 
     const [questionText,setQuestionText] = useState('');
-    const [answerText,setAnswerText] = useState('');
 
     const handleDataChange = () => {
         const questionData : SimpleQuestionData = {
-            questionText: questionText,
-            answerText: answerText
+            questionText: questionText
         }
 
         props.handleDataChange(JSON.stringify(questionData),props.index);
@@ -27,10 +25,9 @@ function SimpleQuestion(props : QuestionProps) {
             setQuestionText(e.target.value);
             handleDataChange();
         } } canEdit={false}/>
-            <AnswerInputField defaultValue={answerText} onChange={(e : ChangeEvent<HTMLInputElement>) => {
-                setAnswerText(e.target.value);
-                handleDataChange();
-            }}/>
+            <div className='w-full h-10 border-2 rounded-md'>
+
+            </div>
             </div>
     </div>);
 }
