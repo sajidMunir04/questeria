@@ -1,4 +1,5 @@
-import { SelectedView } from "../../App";
+import { SelectedView } from "../../pages/MainPage";
+
 
 interface Props {
     onDashboardButtonClick:() => void,
