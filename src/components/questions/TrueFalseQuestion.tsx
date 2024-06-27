@@ -4,13 +4,13 @@ import YesNoAnswerInputField from "../common/YesNoAnswerField";
 import { QuestionProps } from "./QuestionProps";
 import { TrueFalseQuestionData } from "../utils/TrueFalseQuestionData";
 import QuestionHeader from "../common/QuestionHeader";
+import SimpleButton from "../common/SimpleButton";
 
 
 function TrueFalseQuestion(props : QuestionProps) {
 
     const [questionText,setQuestionText] = useState('');
-    const [answerIsNo,setAnswerToNo] = useState(false);
-    const [answerIsYes,setAnswerToYes] = useState(false);
+    const [canEdit,setEditStatus] = useState(true);
 
     const handleDataChange = () => {
         const questionData : TrueFalseQuestionData = {
@@ -29,20 +29,20 @@ function TrueFalseQuestion(props : QuestionProps) {
             handleDataChange();
         } } canEdit={false}/>
             <div className='mb-5'>
-            <YesNoAnswerInputField value={'True'} isCorrect={answerIsYes} 
-            onClick={() => {
-                setAnswerToNo(false);
-                setAnswerToYes(true);
-                handleDataChange();
-            }} />
-            <YesNoAnswerInputField value={'False'} isCorrect={answerIsNo} 
-            onClick={() => {
-                setAnswerToNo(true);
-                setAnswerToYes(false);
-                handleDataChange();
-            }} />
+            <YesNoAnswerInputField value={'True'} />
+            <YesNoAnswerInputField value={'False'} />
             </div>
-            </div>
+            <div className='mb-5 flex w-full'>
+                {!canEdit && 
+                <div className='w-1/6 ml-4'>
+                <SimpleButton buttonText={"Edit"} onClick={() => setEditStatus(true)}/>
+                </div>}
+                {canEdit && 
+                <div className='w-1/6 ml-4'>
+                <SimpleButton buttonText={"Save"} onClick={() => {setEditStatus(false);handleDataChange()}}/>
+                </div>}
+            </div>    
+        </div>
     </div>);
 }
 

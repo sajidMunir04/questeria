@@ -1,6 +1,12 @@
 export const multipleChoiceQuestionAlias = 'multipleChoiceQuestion';
-export const yesNoQuestionAlias = 'yesOrNoQuestion';
+export const trueFalseQuestionAlias = 'yesOrNoQuestion';
 export const simpleQuestionAlias = 'simpleQuestion';
+export const correctOrderQuestionAlias = 'correctOrderQuestion';
+export const OddOneQuestionAlias = 'oddOneQuestion';
+export const dragAndDropQuestionAlias = 'dragAndDropQuestion';
+export const fillBlanksQuestionAlias = 'fillBlanksQuestion';
+export const selectOptionsQuestionAlias = 'selectOptionsQuestion';
+export const matchingQuestionAlias = 'matchingQuestion';
 
 export const questionDataSeparator = '<';
 export const questionSeparator = '>';

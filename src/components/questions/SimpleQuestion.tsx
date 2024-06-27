@@ -4,10 +4,12 @@ import QuestionInputField from "../common/QuestionInputField";
 import { QuestionProps } from "./QuestionProps";
 import { SimpleQuestionData } from "../utils/SimpleQuestionData";
 import QuestionHeader from "../common/QuestionHeader";
+import SimpleButton from "../common/SimpleButton";
 
 function SimpleQuestion(props : QuestionProps) {
 
     const [questionText,setQuestionText] = useState('');
+    const [canEdit,setEditStatus] = useState(true);
 
     const handleDataChange = () => {
         const questionData : SimpleQuestionData = {
@@ -25,9 +27,19 @@ function SimpleQuestion(props : QuestionProps) {
             setQuestionText(e.target.value);
             handleDataChange();
         } } canEdit={false}/>
-            <div className='w-full h-10 border-2 rounded-md'>
+            <div className='w-full h-10 border-2 rounded-md mb-6'>
 
             </div>
+            <div className='mb-5 flex w-full'>
+                    {!canEdit && 
+                    <div className='w-1/6 ml-4'>
+                    <SimpleButton buttonText={"Edit"} onClick={() => setEditStatus(true)}/>
+                    </div>}
+                    {canEdit && 
+                    <div className='w-1/6 ml-4'>
+                    <SimpleButton buttonText={"Save"} onClick={() => {setEditStatus(false);handleDataChange()}}/>
+                    </div>}
+                </div>    
             </div>
     </div>);
 }

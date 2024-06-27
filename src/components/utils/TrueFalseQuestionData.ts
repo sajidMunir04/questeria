@@ -1,5 +1,5 @@
 
 
-export class TrueFalseQuestionData {
-    questionText: string = ''
+export interface TrueFalseQuestionData {
+    questionText: string;
 }

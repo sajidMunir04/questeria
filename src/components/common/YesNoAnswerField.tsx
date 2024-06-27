@@ -1,10 +1,5 @@
-import SimpleButton from "./SimpleButton";
-
-
 interface Props {
-    value: string,
-    isCorrect: boolean,
-    onClick: (arg: any) => void
+    value: string
 }
 
 function YesNoAnswerInputField(props : Props) {

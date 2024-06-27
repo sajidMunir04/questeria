@@ -1,5 +1,5 @@
-import { ChangeEvent, Key, useState } from "react";
-import { multipleChoiceQuestionAlias, saveFormDataURL, simpleQuestionAlias, yesNoQuestionAlias } from "../lib/constants";
+import { Key, useState } from "react";
+import { saveFormDataURL} from "../lib/constants";
 import SimpleButton from "../common/SimpleButton";
 import MultipleChoiceQuestion from "../questions/MultipleChoiceQuestion";
 import { QuestionsType } from "../utils/questions";

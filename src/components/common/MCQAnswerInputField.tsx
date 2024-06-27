@@ -1,9 +1,7 @@
 
 interface Props {
     defaultValue : string,
-    onChange?: (arg: any) => void,
-    isCorrectAnswer: boolean,
-    onClick?: (arg: any) => void,
+    onChange: (arg: any) => void,
     canEdit: boolean,
     onDelete: () => void
 }

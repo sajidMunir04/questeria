@@ -1,3 +1,3 @@
-export class SimpleQuestionData {
-    questionText: string = '';
+export interface SimpleQuestionData {
+    questionText: string;
 }

@@ -5,6 +5,8 @@ import OutlinedButton from "../common/OutlinedButton";
 import AnswerInputField from "../common/AnswerInputField";
 import SimpleButton from "../common/SimpleButton";
 import QuestionInputField from "../common/QuestionInputField";
+import { DragAndDropQuestionData } from "../utils/DragAndDropQuestionData";
+import { dragAndDropQuestionAlias, questionDataSeparator } from "../lib/constants";
 
 export const blankLine : string = '____________________';
 
@@ -12,6 +14,16 @@ function DragAndDropQuestion(props : QuestionProps) {
 
     const [textSections,setTextSections] = useState<string[]>([' ',blankLine]);
     const [answerOptions,setAnswerOptions] = useState<string[]>([]);
+    const [canEdit,setEditStatus] = useState(true);
+
+    const handleDataChange = () => {
+        const questionData : DragAndDropQuestionData = {
+            questionSections: textSections,
+            answers: answerOptions
+        }
+
+        props.handleDataChange(JSON.stringify(questionData) + questionDataSeparator + dragAndDropQuestionAlias,props.index);
+    }
 
     return (<div className='mb-8'>     
         <QuestionHeader questionIndex={props.index} onDeleteButtonClick={props.deleteQuestion} 
@@ -46,12 +58,23 @@ function DragAndDropQuestion(props : QuestionProps) {
             <div>
                 {answerOptions.map((item) => <div className='w-40'><AnswerInputField defaultValue={item}/></div>)}
             </div>
-            <div>
-                <OutlinedButton buttonText={"Add Answer Block"} onClick={() => {
+            <div className='mb-5 flex w-full'>
+                    {canEdit && 
+                    <div className='w-1/6 ml-4'>
+                    <OutlinedButton buttonText={"Add Option"} onClick={() => {
                     const newAnswerOptions = [...answerOptions,''];
                     setAnswerOptions(newAnswerOptions);
-                }}/>
-            </div>
+                    }} />
+                    </div>}
+                    {!canEdit && 
+                    <div className='w-1/6 ml-4'>
+                    <SimpleButton buttonText={"Edit"} onClick={() => setEditStatus(true)}/>
+                    </div>}
+                    {canEdit && 
+                    <div className='w-1/6 ml-4'>
+                    <SimpleButton buttonText={"Save"} onClick={() => {setEditStatus(false);handleDataChange()}}/>
+                    </div>}
+            </div>   
         </div>
     </div>);
 }
