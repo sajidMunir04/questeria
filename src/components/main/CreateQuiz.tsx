@@ -107,11 +107,13 @@ function CreateQuiz() {
     }
 
     const handleCreateForm = async() => {
-        let mergedData = '';
-        questionsData.forEach((item) => mergedData += item);
         const response = await fetch(saveFormDataURL, {
             method: "POST",
-            body: mergedData
+            body: JSON.stringify(questionsData),
+            headers:{
+                'Content-Type':'application/json',
+                'Access-Control-Allow-Origin':'*'
+            }
         })
         const data = await response.json();
         console.log(data);
