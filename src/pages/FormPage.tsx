@@ -7,12 +7,6 @@ function FormPage() {
     
     const [questionsData,setQuestionsData] = useState<string[]>([]);
 
-    const data = '';
-
-    const filteredData = data.split(questionSeparator);
-
-    setQuestionsData(filteredData);
-
     useEffect(() => {    
         const fetchData = async() => {
             const response = await fetch(getFormDataURL);
@@ -21,12 +15,12 @@ function FormPage() {
         }
 
         fetchData();
-    },[questionsData.length]);
+    },[]);
 
 
 
     return(<div>
-        {questionsData.map((item) => <QuizQuestion inputQuestion={item}/>)}
+        <p>FORM PAGE</p>
     </div>);
 }
 
