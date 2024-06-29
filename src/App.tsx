@@ -3,6 +3,8 @@ import 'tailwindcss/tailwind.css';
 import { createBrowserRouter,RouterProvider } from 'react-router-dom';
 import MainPage from './pages/MainPage';
 import FormPage from './pages/FormPage';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 
 const router = createBrowserRouter([
   {
@@ -12,6 +14,14 @@ const router = createBrowserRouter([
   {
       path: '/formPage',
       element: <FormPage/>
+  },
+  {
+    path:'/login',
+    element: <Login/>
+  },
+  {
+    path:'/signup',
+    element:<Signup/>
   }
 ])
 
