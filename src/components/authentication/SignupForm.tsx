@@ -1,9 +1,10 @@
+import { signupFormURL } from "../lib/constants";
 import FormButton from "./FormButton";
 import FormInputField from "./FormInputField";
 
 
 function SignupForm() {
-    return (<form className='flex flex-col w-2/5 m-auto'>
+    return (<form action={signupFormURL} className='flex flex-col w-2/5 m-auto'>
         <div className='w-full flex justify-between items-center'>
             <div className='w-5/12'>
             <FormInputField inputType={"text"} placeHolder={"Your First Name"} label={"First Name"}/>

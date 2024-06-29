@@ -1,6 +1,12 @@
+import { useState } from "react";
+import AccountMenuButton from "./AccountMenuButton";
 
 
 function AccountPanel() {
+
+    const [isMenuOpen,setMenuStatus] = useState(false);
+
+
     return (<div className='w-full flex justify-between'>
         <div className='w-10 h-10 rounded-full bg-white flex justify-center items-center'>
             <img className='w-6 h-6' src='/public/images/common/Vector.svg'/>
@@ -13,9 +19,7 @@ function AccountPanel() {
             <p>User Status</p>
         </div>
         <div className='w-10 h-10 rounded-full flex justify-center items-center '>
-            <div className='w-full h-full bg-custom-color-one overflow-hidden rounded-full'>
-
-            </div>
+            <AccountMenuButton imageLink=""/>
         </div>
     </div>);
 }
