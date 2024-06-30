@@ -4,8 +4,6 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
 
 interface Props {
     imageLink: string
@@ -21,11 +19,6 @@ export default function AccountMenuButton(props : Props) {
     setAnchorEl(null);
   };
 
-  const navigate = useNavigate();
-
-  const handleNavigate = (route: string) => {
-    navigate(route);
-  }
 
   return (
     <div className='w-full h-full'>
@@ -50,8 +43,9 @@ export default function AccountMenuButton(props : Props) {
         }}
       >
         <MenuItem onClick={() => {
-            handleClose}}><Link to={'formpage'}></Link>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
+            handleClose}}>Profile</MenuItem>
+        <MenuItem onClick={() => 
+          {handleClose}}>Login</MenuItem>
         <MenuItem href='' onClick={handleClose}>Logout</MenuItem>
       </Menu>
     </div>

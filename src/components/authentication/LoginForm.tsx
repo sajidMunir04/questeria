@@ -1,20 +1,18 @@
 import { loginFormURL } from "../lib/constants";
 import FormButton from "./FormButton";
 import FormInputField from "./FormInputField";
+import { AuthState } from "./authState";
+import { FormProps } from "./formProps";
 
+function LoginForm(props : FormProps) {
 
-function LoginForm() {
-
-    
-
-    return (
-    <div className='w-full h-full absolute bg-zinc-900'>
+    return (<>{props.authState === AuthState.LoginForm &&
     <form action={loginFormURL} className='flex flex-col w-2/5 m-auto'>
             <FormInputField inputType={"text"} placeHolder={"Enter your e-mail"} label={"Email"}/>
             <FormInputField inputType={'password'} placeHolder="Your Password" label="Password"/>
             <FormButton buttonText={"Login"} onClick={() => {}}/>
-            </form>
-    </div>);
+            </form>}
+    </>);
 }
 
 export default LoginForm;

@@ -1,12 +1,9 @@
 import { useState } from "react";
 import AccountMenuButton from "./AccountMenuButton";
+import { AuthState } from "../authentication/authState";
 
 
 function AccountPanel() {
-
-    const [isMenuOpen,setMenuStatus] = useState(false);
-
-
     return (<div className='w-full flex justify-between'>
         <div className='w-10 h-10 rounded-full bg-white flex justify-center items-center'>
             <img className='w-6 h-6' src='/public/images/common/Vector.svg'/>
