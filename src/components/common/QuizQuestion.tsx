@@ -1,4 +1,4 @@
-import { multipleChoiceQuestionAlias, simpleQuestionAlias } from "../lib/constants";
+import { multipleChoiceQuestionAlias, simpleQuestionAlias } from "../../lib/constants";
 import QuestionInputField from "./QuestionInputField";
 import MCQAnswerInputField from "./MCQAnswerInputField";
 import YesNoAnswerField from "./YesNoAnswerField";

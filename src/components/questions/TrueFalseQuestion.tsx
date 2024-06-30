@@ -2,7 +2,7 @@ import { ChangeEvent, useState } from "react";
 import QuestionInputField from "../common/QuestionInputField";
 import YesNoAnswerInputField from "../common/YesNoAnswerField";
 import { QuestionProps } from "./QuestionProps";
-import { TrueFalseQuestionData } from "../utils/TrueFalseQuestionData";
+import { TrueFalseQuestionData } from "../../utils/TrueFalseQuestionData";
 import QuestionHeader from "../common/QuestionHeader";
 import SimpleButton from "../common/SimpleButton";
 

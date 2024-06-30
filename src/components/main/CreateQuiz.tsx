@@ -1,8 +1,8 @@
 import { Key, useState } from "react";
-import { saveFormDataURL} from "../lib/constants";
+import { saveFormDataURL} from "../../lib/constants";
 import SimpleButton from "../common/SimpleButton";
 import MultipleChoiceQuestion from "../questions/MultipleChoiceQuestion";
-import { QuestionsType } from "../utils/questions";
+import { QuestionsType } from "../../utils/questions";
 import TrueFalseQuestion from "../questions/TrueFalseQuestion";
 import SimpleQuestion from "../questions/SimpleQuestion";
 import axios from "axios";
@@ -160,8 +160,8 @@ function CreateQuiz() {
 
     return (<div className='mt-1 w-full p-10 h-full overflow-hidden'>
         <h3 className='font-poppinsBold text-36px'>Create New Quiz</h3>
-        <div className='h-5/6 overflow-hidden'>
-            <div className='h-full overflow-scroll'>
+        <div className='h-full overflow-hidden'>
+            <div className='h-full overflow-scroll'>               
             {quizQuestions.map(function (item: QuestionsType,index: number){
                 if (item === QuestionsType.MultipleChoiceQuestion) {
                     return <MultipleChoiceQuestion index={index} deleteQuestion={() => handleDeleteQuestion(index)} 
@@ -214,10 +214,8 @@ function CreateQuiz() {
                     <p className='p-4 border-y-1 cursor-pointer' onClick={handleCorrectOrderQuestion}>Correct Order Question</p>                      
                 </div>}
             </div>
-            </div>
-        </div>
-        <div>
             <SimpleButton buttonText={"Create Form"} onClick={handleCreateForm} />
+            </div>        
         </div>
     </div>);
 }

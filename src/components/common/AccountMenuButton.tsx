@@ -4,14 +4,20 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
+import { useAppSelector,useAppDispatch } from '../../app/hooks';
 
 interface Props {
     imageLink: string
 }
 
+
 export default function AccountMenuButton(props : Props) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+
+  const authState = useAppSelector((state) => state.authState);
+  const dispatch = useAppDispatch();
+
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -50,10 +56,4 @@ export default function AccountMenuButton(props : Props) {
       </Menu>
     </div>
   );
-}
-
-
-export enum UserAuthenticationState {
-    NotLogIn,
-    LoggedIn
 }

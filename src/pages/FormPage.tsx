@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { getFormDataURL, questionSeparator } from "../components/lib/constants";
-import QuizQuestion from "../components/common/QuizQuestion";
+import { getFormDataURL, questionSeparator } from "../lib/constants";
 
 
 function FormPage() {
@@ -16,7 +15,6 @@ function FormPage() {
 
         fetchData();
     },[]);
-
 
 
     return(<div>

@@ -4,8 +4,8 @@ import QuestionHeader from "../common/QuestionHeader";
 import { QuestionProps } from "./QuestionProps";
 import QuestionInputField from "../common/QuestionInputField";
 import SimpleButton from "../common/SimpleButton";
-import { SelectOptionsQuestionData } from "../utils/SelectOptionsQuestionData";
-import { questionDataSeparator, selectOptionsQuestionAlias } from "../lib/constants";
+import { SelectOptionsQuestionData } from "../../utils/SelectOptionsQuestionData";
+import { questionDataSeparator, selectOptionsQuestionAlias } from "../../lib/constants";
 
 const selectOption = '&%&%&%&%%&';
 

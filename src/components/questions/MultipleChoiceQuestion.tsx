@@ -3,8 +3,8 @@ import MCQAnswerInputField from "../common/MCQAnswerInputField";
 import QuestionInputField from "../common/QuestionInputField";
 import SimpleButton from "../common/SimpleButton";
 import { QuestionProps } from "./QuestionProps";
-import { MultipleChoiceQuestionData } from "../utils/MultipleChoiceQuestionData";
-import { multipleChoiceQuestionAlias, questionDataSeparator } from "../lib/constants";
+import { MultipleChoiceQuestionData } from "../../utils/MultipleChoiceQuestionData";
+import { multipleChoiceQuestionAlias, questionDataSeparator } from "../../lib/constants";
 import QuestionHeader from "../common/QuestionHeader";
 import OutlinedButton from "../common/OutlinedButton";
 

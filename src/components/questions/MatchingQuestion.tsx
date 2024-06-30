@@ -4,8 +4,8 @@ import QuestionInputField from "../common/QuestionInputField";
 import { QuestionProps } from "./QuestionProps";
 import AnswerInputField from "../common/AnswerInputField";
 import OutlinedButton from "../common/OutlinedButton";
-import { MatchingQuestionData } from "../utils/MatchingQuestionData";
-import { matchingQuestionAlias, questionDataSeparator } from "../lib/constants";
+import { MatchingQuestionData } from "../../utils/MatchingQuestionData";
+import { matchingQuestionAlias, questionDataSeparator } from "../../lib/constants";
 import SimpleButton from "../common/SimpleButton";
 
 function MatchingQuestion(props : QuestionProps) {

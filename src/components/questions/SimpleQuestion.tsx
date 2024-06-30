@@ -2,7 +2,7 @@ import { ChangeEvent, useState } from "react";
 import AnswerInputField from "../common/AnswerInputField";
 import QuestionInputField from "../common/QuestionInputField";
 import { QuestionProps } from "./QuestionProps";
-import { SimpleQuestionData } from "../utils/SimpleQuestionData";
+import { SimpleQuestionData } from "../../utils/SimpleQuestionData";
 import QuestionHeader from "../common/QuestionHeader";
 import SimpleButton from "../common/SimpleButton";
 

@@ -5,8 +5,8 @@ import OutlinedButton from "../common/OutlinedButton";
 import AnswerInputField from "../common/AnswerInputField";
 import SimpleButton from "../common/SimpleButton";
 import QuestionInputField from "../common/QuestionInputField";
-import { DragAndDropQuestionData } from "../utils/DragAndDropQuestionData";
-import { dragAndDropQuestionAlias, questionDataSeparator } from "../lib/constants";
+import { DragAndDropQuestionData } from "../../utils/DragAndDropQuestionData";
+import { dragAndDropQuestionAlias, questionDataSeparator } from "../../lib/constants";
 
 export const blankLine : string = '____________________';
 

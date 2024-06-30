@@ -4,8 +4,8 @@ import { QuestionProps } from "./QuestionProps";
 import QuestionInputField from "../common/QuestionInputField";
 import AnswerInputField from "../common/AnswerInputField";
 import OutlinedButton from "../common/OutlinedButton";
-import { OddOneQuestionData } from "../utils/OddOneQuestionData";
-import { OddOneQuestionAlias, questionDataSeparator } from "../lib/constants";
+import { OddOneQuestionData } from "../../utils/OddOneQuestionData";
+import { OddOneQuestionAlias, questionDataSeparator } from "../../lib/constants";
 import SimpleButton from "../common/SimpleButton";
 
 

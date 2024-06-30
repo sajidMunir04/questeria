@@ -1,4 +1,4 @@
-import { signupFormURL } from "../lib/constants";
+import { signupFormURL } from "../../lib/constants";
 import FormButton from "./FormButton";
 import FormInputField from "./FormInputField";
 import { AuthState } from "./authState";

@@ -1,6 +1,4 @@
-import { useState } from "react";
 import AccountMenuButton from "./AccountMenuButton";
-import { AuthState } from "../authentication/authState";
 
 
 function AccountPanel() {

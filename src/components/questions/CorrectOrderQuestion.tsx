@@ -5,8 +5,8 @@ import QuestionInputField from "../common/QuestionInputField";
 import AnswerInputField from "../common/AnswerInputField";
 import OutlinedButton from "../common/OutlinedButton";
 import SimpleButton from "../common/SimpleButton";
-import { CorrectOrderQuestionData } from "../utils/CorrectOrderQuestionData";
-import { correctOrderQuestionAlias, questionDataSeparator } from "../lib/constants";
+import { CorrectOrderQuestionData } from "../../utils/CorrectOrderQuestionData";
+import { correctOrderQuestionAlias, questionDataSeparator } from "../../lib/constants";
 
 
 function CorrectOrderQuestion(props : QuestionProps) {
