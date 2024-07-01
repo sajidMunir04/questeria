@@ -5,6 +5,8 @@ import MenuItem from '@mui/material/MenuItem';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import { useAppSelector,useAppDispatch } from '../../app/hooks';
+import { setToLoginForm,setToNone,setToSignupForm } from '../../app/slices/authenticationSlice';
+import { AuthenticationState } from '../authentication/authState';
 
 interface Props {
     imageLink: string
@@ -15,7 +17,7 @@ export default function AccountMenuButton(props : Props) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
-  const authState = useAppSelector((state) => state.authState);
+  const authenticationState = useAppSelector((state) => state.authenticationState);
   const dispatch = useAppDispatch();
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -24,7 +26,6 @@ export default function AccountMenuButton(props : Props) {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
 
   return (
     <div className='w-full h-full'>
@@ -48,11 +49,16 @@ export default function AccountMenuButton(props : Props) {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem onClick={() => {
-            handleClose}}>Profile</MenuItem>
-        <MenuItem onClick={() => 
-          {handleClose}}>Login</MenuItem>
-        <MenuItem href='' onClick={handleClose}>Logout</MenuItem>
+        {authenticationState.authState === AuthenticationState.None  && <MenuItem onClick={() => {
+            handleClose();
+            dispatch(setToLoginForm());
+            }}>Login</MenuItem>}
+        {authenticationState.authState === AuthenticationState.None && <MenuItem onClick={() => {
+          handleClose();
+          dispatch(setToSignupForm());
+          }}>Signup</MenuItem>}
+        {authenticationState.authState === AuthenticationState.LoggedIn && 
+        <MenuItem href='' onClick={handleClose}>Logout</MenuItem>}
       </Menu>
     </div>
   );

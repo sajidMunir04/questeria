@@ -3,7 +3,7 @@ import { AuthenticationState } from "../../components/authentication/authState";
 import { Root } from "postcss";
 import { RootState } from "../store";
 
-interface AuthState {
+export interface AuthState {
     authState : AuthenticationState
 }
 
@@ -29,5 +29,5 @@ export const authenticationSlice = createSlice({
 
 
 export const { setToNone,setToLoginForm,setToSignupForm} = authenticationSlice.actions;
-export const currentAuthenticationState = (state : RootState) => state.authState;
+export const currentAuthenticationState = (state : RootState) => state.authenticationState;
 export default authenticationSlice.reducer;

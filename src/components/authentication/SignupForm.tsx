@@ -1,15 +1,11 @@
 import { signupFormURL } from "../../lib/constants";
 import FormButton from "./FormButton";
 import FormInputField from "./FormInputField";
-import { AuthState } from "./authState";
-import { FormProps } from "./formProps";
 
 
-function SignupForm(props : FormProps) {
-    return (
-        <> {props.authState === AuthState.SignUpForm &&
-        <form action={signupFormURL} className='flex flex-col w-2/5 m-auto'>
-        <div className='w-full flex justify-between items-center'>
+function SignupForm() {
+    return (<form action={signupFormURL} className='flex flex-col w-2/5 m-auto'>
+            <div className='w-full flex justify-between items-center'>
             <div className='w-5/12'>
             <FormInputField inputType={"text"} placeHolder={"Your First Name"} label={"First Name"}/>
             </div>
@@ -21,8 +17,7 @@ function SignupForm(props : FormProps) {
             <FormInputField inputType={"password"} placeHolder={""} label={"Password"}/>
             <FormInputField inputType={"password"} placeHolder={""} label={"Confirm Password"}/>
             <FormButton buttonText={"Sign Up"} onClick={() => {}}/>
-        </form>}
-    </>);
+            </form>);
 }
 
 export default SignupForm;
