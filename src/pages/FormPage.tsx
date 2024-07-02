@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { getFormDataURL, questionSeparator } from "../lib/constants";
+import { getFormDataURL, multipleChoiceQuestionAlias, questionDataSeparator, questionSeparator } from "../lib/constants";
+import MultipleChoiceQuestionView from "../components/questionsView/MultipleChoiceQuestionView";
 
 
 function FormPage() {
@@ -10,15 +11,28 @@ function FormPage() {
         const fetchData = async() => {
             const response = await fetch(getFormDataURL);
             const data = await response.json();
-            console.log(data);
+
+            setQuestionsData(data.questionData);
+
+            console.log(data, data.questionData);
         }
 
         fetchData();
     },[]);
 
 
-    return(<div>
-        <p>FORM PAGE</p>
+    return(<div className='w-full h-full bg-green-400'>
+        {questionsData !== undefined && questionsData.map(function(item) {
+            
+            const qData = item.split(questionDataSeparator);
+            
+            if (qData[1] === multipleChoiceQuestionAlias) {
+                const mcqData = JSON.parse(qData[0]);
+                return <MultipleChoiceQuestionView questionText={mcqData.questionText} answers={mcqData.answers}/>
+            }
+            
+            return <div></div>
+        })}
     </div>);
 }
 

@@ -11,7 +11,9 @@ export default {
       },
       fontFamily :{
         poppinsMedium: ['Poppins-Medium', 'sans-serif'],
-        poppinsBold: ['Poppins-Bold', 'sans-serif']
+        poppinsBold: ['Poppins-Bold', 'sans-serif'],
+        poppinsLight: ['Poppins-Light', 'sans-serif'],
+        poppinsSemiBold: ['Poppins-SemiBold', 'sans-serif']
       },
       zIndex: {
         '-1': '-1',

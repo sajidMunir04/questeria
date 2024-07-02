@@ -12,6 +12,16 @@
   src: url('../public/fonts/Poppins/Poppins-Bold.ttf');
 }
 
+@font-face {
+  font-family: Poppins-Light;
+  src: url('../public/fonts/Poppins/Poppins-Light.ttf');
+}
+
+@font-face {
+  font-family: Poppins-SemiBold;
+  src: url('../public/fonts/Poppins/Poppins-SemiBold.ttf');
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
