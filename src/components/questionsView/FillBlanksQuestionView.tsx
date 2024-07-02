@@ -1,8 +1,12 @@
 
+interface Props {
+    questionSections: string[]
+}
 
-function FillBlanksQuestionView(props : QuestionViewProps) {
+
+function FillBlanksQuestionView(props : Props) {
     return (<div>
-
+        
     </div>);
 }
 
