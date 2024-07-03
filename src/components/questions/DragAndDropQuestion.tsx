@@ -6,13 +6,12 @@ import AnswerInputField from "../common/AnswerInputField";
 import SimpleButton from "../common/SimpleButton";
 import QuestionInputField from "../common/QuestionInputField";
 import { DragAndDropQuestionData } from "../../utils/DragAndDropQuestionData";
-import { dragAndDropQuestionAlias, questionDataSeparator } from "../../lib/constants";
+import { blankArea, dragAndDropQuestionAlias, questionDataSeparator } from "../../lib/constants";
 
-export const blankLine : string = '____________________';
 
 function DragAndDropQuestion(props : QuestionProps) {
 
-    const [textSections,setTextSections] = useState<string[]>([' ',blankLine]);
+    const [textSections,setTextSections] = useState<string[]>([' ',blankArea]);
     const [answerOptions,setAnswerOptions] = useState<string[]>([]);
     const [canEdit,setEditStatus] = useState(true);
 
@@ -31,7 +30,7 @@ function DragAndDropQuestion(props : QuestionProps) {
                 <div className='bg-white p-8'>
             <div className='flex flex-wrap'>
             {textSections.map(function(item,index) {
-                if (item !== blankLine) {
+                if (item !== blankArea) {
                     return <div className='h-full'><QuestionInputField defaultValue={item} canEdit={false} onChange={(e: ChangeEvent<HTMLInputElement>) => {
                         const sections = textSections;
                         sections[index] = e.target.value;
@@ -42,13 +41,13 @@ function DragAndDropQuestion(props : QuestionProps) {
                     return <div className='relative w-auto h-10 flex flex-col justify-end'><p className=''>{item}</p></div>
                 }
             })}
-            {textSections[textSections.length - 1] !== blankLine && <div>
+            {textSections[textSections.length - 1] !== blankArea && <div>
                 <OutlinedButton buttonText={"Add Blank"} onClick={() => {
-                    const newSections = [...textSections,blankLine];
+                    const newSections = [...textSections,blankArea];
                     setTextSections(newSections);
                 }}/>
               </div>}
-              {textSections[textSections.length - 1] === blankLine && <div>
+              {textSections[textSections.length - 1] === blankArea && <div>
                 <OutlinedButton buttonText={"Add Text"} onClick={() => {
                     const newSections = [...textSections,' '];
                     setTextSections(newSections);

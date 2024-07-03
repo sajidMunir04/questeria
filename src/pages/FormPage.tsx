@@ -25,8 +25,12 @@ function FormPage() {
 
 
     return(<div className='w-full h-full bg-green-400 flex flex-col justify-center items-center'>
-        {questionsData !== undefined && questionsData.map(function(item) {
+        {questionsData !== undefined && questionsData.map(function(item,index) {
             
+            if (index !== questionIndex) {
+                return <></>
+            }
+
             const qData = item.split(questionDataSeparator);
             
             if (qData[1] === multipleChoiceQuestionAlias) {

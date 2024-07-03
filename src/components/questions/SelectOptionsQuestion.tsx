@@ -5,9 +5,8 @@ import { QuestionProps } from "./QuestionProps";
 import QuestionInputField from "../common/QuestionInputField";
 import SimpleButton from "../common/SimpleButton";
 import { SelectOptionsQuestionData } from "../../utils/SelectOptionsQuestionData";
-import { questionDataSeparator, selectOptionsQuestionAlias } from "../../lib/constants";
+import { blankArea, questionDataSeparator, selectOptionsQuestionAlias } from "../../lib/constants";
 
-const selectOption = '&%&%&%&%%&';
 
 function SelectOptionsQuestion(props : QuestionProps) {
     const [questionSections,setQuestionSections] = useState<string[]>([]);
@@ -32,7 +31,7 @@ function SelectOptionsQuestion(props : QuestionProps) {
         <div className='bg-white p-8'>
             <div className='flex flex-wrap'>
                 {questionSections.map(function (item,index) {
-                    if (item !== selectOption) {
+                    if (item !== blankArea) {
                         return (<div>
                                 <QuestionInputField defaultValue={item} canEdit={false} onChange={(e: ChangeEvent<HTMLInputElement>) => {
                                             const sections = questionSections;
@@ -55,16 +54,16 @@ function SelectOptionsQuestion(props : QuestionProps) {
                             </div>);
                     }
                 })}
-            {((questionSections.length === 0 || questionSections[questionSections.length - 1] === selectOption) && textSectionsCount < 3) && <div className='w-1/6'>
+            {((questionSections.length === 0 || questionSections[questionSections.length - 1] === blankArea) && textSectionsCount < 3) && <div className='w-1/6'>
                 <OutlinedButton buttonText={"Add Text"} onClick={() => {
                     const sections = [...questionSections,' '];
                     setQuestionSections(sections);
                     setTextSectionsCount(textSectionsCount + 1);
                 }}/>
             </div>}
-            {((questionSections.length === 0 || questionSections[questionSections.length - 1] !== selectOption) && optionsDropDownCount < 3) &&  <div className='w-1/6'>
+            {((questionSections.length === 0 || questionSections[questionSections.length - 1] !== blankArea) && optionsDropDownCount < 3) &&  <div className='w-1/6'>
                 <OutlinedButton buttonText={"Add Options"} onClick={() => {
-                    const sections = [...questionSections,selectOption];
+                    const sections = [...questionSections,blankArea];
                     const newSelectOptions = selectOptions === undefined ? [['Option']] :  [...selectOptions!,['Option']];
                     setSelectOptions(newSelectOptions);
                     setQuestionSections(sections);

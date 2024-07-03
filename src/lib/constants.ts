@@ -8,6 +8,8 @@ export const fillBlanksQuestionAlias = 'fillBlanksQuestion';
 export const selectOptionsQuestionAlias = 'selectOptionsQuestion';
 export const matchingQuestionAlias = 'matchingQuestion';
 
+export const blankArea = '!!!!!!!!!!!!!!!!!!!!!';
+
 export const questionDataSeparator = '#';
 export const questionSeparator = '^';
 

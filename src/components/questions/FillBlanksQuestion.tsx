@@ -6,21 +6,18 @@ import QuestionInputField from "../common/QuestionInputField";
 import AnswerInputField from "../common/AnswerInputField";
 import SimpleButton from "../common/SimpleButton";
 import { FillBlanksQuestionData } from "../../utils/FillBlanksQuestionData";
-import { fillBlanksQuestionAlias, questionDataSeparator } from "../../lib/constants";
-
-export const blankLine : string = '____________________';
+import { blankArea, fillBlanksQuestionAlias, questionDataSeparator } from "../../lib/constants";
 
 
 function FillBlanksQuestion(props : QuestionProps) {
 
-    const [textSections,setTextSections] = useState<string[]>([' ',blankLine]);
-    const [answerOptions,setAnswerOptions] = useState<string[]>([]);
+    const [textSections,setTextSections] = useState<string[]>([' ',blankArea]);
     const [canEdit,setEditStatus] = useState(true);
 
     const handleDataChange = () => {
         const questionData : FillBlanksQuestionData = {
             questionSections: textSections,
-            answerOptions: answerOptions
+            answerOptions: []
         }
 
         props.handleDataChange(JSON.stringify(questionData) + questionDataSeparator + fillBlanksQuestionAlias,props.index);
@@ -32,7 +29,7 @@ function FillBlanksQuestion(props : QuestionProps) {
         <div className='bg-white p-8'>
             <div className='flex flex-wrap'>
             {textSections.map(function(item,index) {
-                if (item !== blankLine) {
+                if (item !== blankArea) {
                     return <div className='h-full'><QuestionInputField onChange={(e: ChangeEvent<HTMLInputElement>) => {
                         const sections = textSections;
                         sections[index] = e.target.value;
@@ -43,22 +40,23 @@ function FillBlanksQuestion(props : QuestionProps) {
                     return <div className='relative w-auto h-10 flex flex-col justify-end'><p className=''>{item}</p></div>
                 }
             })}
-            {textSections[textSections.length - 1] !== blankLine && <div>
+            {textSections[textSections.length - 1] !== blankArea && <div>
                 <OutlinedButton buttonText={"Add Blank"} onClick={() => {
-                    const newSections = [...textSections,blankLine];
+                    const newSections = [...textSections,blankArea];
                     setTextSections(newSections);
                 }}/>
               </div>}
-              {textSections[textSections.length - 1] === blankLine && <div>
+              {textSections[textSections.length - 1] === blankArea && <div>
                 <OutlinedButton buttonText={"Add Text"} onClick={() => {
                     const newSections = [...textSections,' '];
                     setTextSections(newSections);
                 }}/>
               </div>}
             </div>
+            {/*
             <div>
                 {answerOptions.map((item) => <AnswerInputField defaultValue={item}/>)}
-            </div>
+            </div>*/}
             <div className='mb-5 flex w-full'>
                     {!canEdit && 
                     <div className='w-1/6 ml-4'>
