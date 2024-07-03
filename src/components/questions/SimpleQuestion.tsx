@@ -4,6 +4,7 @@ import { QuestionProps } from "./QuestionProps";
 import { SimpleQuestionData } from "../../utils/SimpleQuestionData";
 import QuestionHeader from "../common/QuestionHeader";
 import SimpleButton from "../common/SimpleButton";
+import { questionDataSeparator, simpleQuestionAlias } from "../../lib/constants";
 
 function SimpleQuestion(props : QuestionProps) {
 
@@ -15,7 +16,7 @@ function SimpleQuestion(props : QuestionProps) {
             questionText: questionText
         }
 
-        props.handleDataChange(JSON.stringify(questionData),props.index);
+        props.handleDataChange(JSON.stringify(questionData) + questionDataSeparator + simpleQuestionAlias,props.index);
     }
 
     return (<div className='border-b-2 mb-8'>

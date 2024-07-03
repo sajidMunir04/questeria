@@ -5,6 +5,7 @@ import { QuestionProps } from "./QuestionProps";
 import { TrueFalseQuestionData } from "../../utils/TrueFalseQuestionData";
 import QuestionHeader from "../common/QuestionHeader";
 import SimpleButton from "../common/SimpleButton";
+import { questionDataSeparator, trueFalseQuestionAlias } from "../../lib/constants";
 
 
 function TrueFalseQuestion(props : QuestionProps) {
@@ -17,7 +18,7 @@ function TrueFalseQuestion(props : QuestionProps) {
             questionText: questionText
         }
 
-        props.handleDataChange(JSON.stringify(questionData),props.index);
+        props.handleDataChange(JSON.stringify(questionData) + questionDataSeparator + trueFalseQuestionAlias,props.index);
     }
 
     return (<div className='border-b-2 mb-8'>

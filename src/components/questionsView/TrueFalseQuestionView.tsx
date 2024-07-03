@@ -2,7 +2,12 @@ import { useState } from "react";
 import QuestionText from "../questionsComponents/QuestionText";
 
 
-function TrueFalseQuestionView(props : QuestionViewProps) {
+interface Props {
+    questionText: string
+}
+
+
+function TrueFalseQuestionView(props : Props) {
 
     const [questionText,setQuestionText] = useState<string>('');
 
