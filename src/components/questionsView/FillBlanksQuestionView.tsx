@@ -6,7 +6,7 @@ interface Props {
 
 function FillBlanksQuestionView(props : Props) {
     return (<div>
-        <div>
+        <div className='flex'>
             {
                 props.questionSections.map((item) => <div><p>{item}</p></div>)
             }

@@ -9,7 +9,7 @@ interface Props {
 function MatchingQuestionView(props : Props) {
     return (<div>
             <p>{props.questionText}</p>
-            <div>
+            <div className='flex justify-between'>
                 <div>
                     {props.firstAnswers.map((item) => <div><p>{item}</p></div>)}
                 </div>

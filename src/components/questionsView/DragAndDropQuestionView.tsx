@@ -9,7 +9,7 @@ interface Props {
 
 function DragAndDropQuestionView(props : Props) {
     return (<div>
-        <div>
+        <div className='flex'>
             {props.questionSections.map((item) => (item !== blankArea ? <p>{item}</p> : <p>_______</p>))}
         </div>
         <div>

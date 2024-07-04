@@ -12,7 +12,7 @@ function TrueFalseQuestionView(props : Props) {
     const [questionText,setQuestionText] = useState<string>('');
 
     return (<div>
-        <QuestionText questionText={questionText}/>
+        <p>{props.questionText}</p>
         <div>
         <div className='flex mb-3 items-center'>
             <div className='ml-2 rounded-full border-sky-500 border-solid border-2 w-8 h-8 flex'>
