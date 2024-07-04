@@ -1,3 +1,4 @@
+import QuestionText from "./questionsComponents/QuestionText";
 
 interface Props {
     questionSections: string[],
@@ -8,7 +9,7 @@ interface Props {
 function SelectOptionsQuestionView(props : Props) {
     return (<div>
         <div>
-            {props.questionSections.map((item) => <p>{item}</p>)}
+            {props.questionSections.map((item) => <QuestionText questionText={item}/>)}
         </div>
     </div>);
 }

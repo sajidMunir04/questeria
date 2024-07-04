@@ -18,6 +18,9 @@ export default {
       zIndex: {
         '-1': '-1',
         '-3': '-3'
+      },
+      width :{
+        '20ch': '10ch'
       }
     },
   },
