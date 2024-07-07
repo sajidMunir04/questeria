@@ -10,10 +10,10 @@ interface Props {
 
 function SelectOptionsQuestionView(props : Props) {
     return (<div>
-        <div>
+        <div>  
             {props.questionSections.map(function(item,index) {
                 if (item === blankArea){
-                    return <BlankArea/>
+                    return <BlankArea/> 
                 }
                 else {
                     <QuestionText questionText={item}/>
