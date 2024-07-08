@@ -15,7 +15,7 @@ function DragAndDropQuestionView(props : Props) {
             <div className='w-20ch border-black border-b-2'></div>))}
         </div>
         <div>
-            {props.answers.map((item) => <div><p>{item}</p></div>)}
+            {props.answers.map((item) => <div><p className=''>{item}</p></div>)}
         </div>
     </div>);
 }

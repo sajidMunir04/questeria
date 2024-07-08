@@ -40,6 +40,7 @@ function FormPage() {
 
 
     return(<div className='w-full h-full bg-green-400 flex flex-col justify-center items-center'>
+        <p className='font-poppinsSemiBold text-xl mb-16'>Question {questionIndex + 1} of {questionsData.length}</p>
         {questionsData !== undefined && questionsData.map(function(item,index) {
             
             if (index !== questionIndex) {
