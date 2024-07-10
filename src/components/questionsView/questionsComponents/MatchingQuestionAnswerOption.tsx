@@ -4,8 +4,8 @@ interface Props {
 }
 
 function MatchingQuestionAnswerOption(props : Props) {
-    return (<div>
-        <p>{props.text}</p>
+    return (<div className='bg-white rounded-lg text-center p-3 mb-2'>
+        <p className='mb-0 font-poppinsSemiBold text-xl'>{props.text}</p>
     </div>);
 }
 

@@ -1,3 +1,4 @@
+import MatchingQuestionAnswerOption from "./questionsComponents/MatchingQuestionAnswerOption";
 import QuestionText from "./questionsComponents/QuestionText";
 
 interface Props {
@@ -10,12 +11,12 @@ interface Props {
 function MatchingQuestionView(props : Props) {
     return (<div>
         <QuestionText questionText={props.questionText}/>
-            <div className='flex justify-between'>
+            <div className='flex justify-between mt-3'>
                 <div>
-                    {props.firstAnswers.map((item) => <div><p>{item}</p></div>)}
+                    {props.firstAnswers.map((item) => <MatchingQuestionAnswerOption text={item}/>)}
                 </div>
                 <div>
-                    {props.secondAnswers.map((item) => <div><p>{item}</p></div>)}
+                    {props.secondAnswers.map((item) => <MatchingQuestionAnswerOption text={item}/>)}
                 </div>
             </div>
     </div>);

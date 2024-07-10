@@ -1,3 +1,4 @@
+import QuestionText from "./questionsComponents/QuestionText";
 
 interface Props {
     questionText: string,
@@ -6,9 +7,9 @@ interface Props {
 
 function OddOneQuestionView (props : Props) {
     return (<div>
-            <p>{props.questionText}</p>
+            <QuestionText questionText={props.questionText}/>
             <div>
-                {props.answers.map((item) => <div><p>{item}</p></div>)}
+                {props.answers.map((item) => <div className='bg-white mb-3 rounded-xl text-center font-poppinsSemiBold'><p className='text-2xl'>{item}</p></div>)}
             </div>
     </div>);
 }
