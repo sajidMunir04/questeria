@@ -40,7 +40,7 @@ function FormPage() {
 
 
     return(<div className='w-full h-full bg-green-400 flex flex-col justify-center items-center'>
-        <p className='font-poppinsSemiBold text-xl mb-16'>Question {questionIndex + 1} of {questionsData.length}</p>
+        {questionsData.length > 0 && <p className='font-poppinsSemiBold text-xl mb-16'>Question {questionIndex + 1} of {questionsData.length}</p>}
         {questionsData !== undefined && questionsData.map(function(item,index) {
             
             if (index !== questionIndex) {
@@ -89,9 +89,9 @@ function FormPage() {
             
             return <div></div>
         })}
-        <button className='mt-10' onClick={() => {
+        {questionsData.length > 0 && <button className='mt-10' onClick={() => {
             questionIndex < questionsData.length - 1 ? setQuestionIndex(questionIndex + 1) : () => {}
-        }}>Next</button>
+        }}>Next</button>}
     </div>);
 }
 
