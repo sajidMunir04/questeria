@@ -89,9 +89,12 @@ function FormPage() {
             
             return <div></div>
         })}
-        {questionsData.length > 0 && <button className='mt-10' onClick={() => {
+        {(questionsData.length > 0 && questionIndex < questionsData.length - 2) && <button className='mt-10' onClick={() => {
             questionIndex < questionsData.length - 1 ? setQuestionIndex(questionIndex + 1) : () => {}
         }}>Next</button>}
+        {
+            questionIndex === questionsData.length - 1 && <button>Submit</button>
+        }
     </div>);
 }
 
