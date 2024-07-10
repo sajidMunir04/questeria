@@ -1,3 +1,4 @@
+import QuestionText from "./questionsComponents/QuestionText";
 
 interface Props {
     questionText: string,
@@ -8,7 +9,7 @@ interface Props {
 
 function MatchingQuestionView(props : Props) {
     return (<div>
-            <p>{props.questionText}</p>
+        <QuestionText questionText={props.questionText}/>
             <div className='flex justify-between'>
                 <div>
                     {props.firstAnswers.map((item) => <div><p>{item}</p></div>)}
