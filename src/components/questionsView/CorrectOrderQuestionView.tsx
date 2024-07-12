@@ -1,3 +1,4 @@
+import QuestionText from "./questionsComponents/QuestionText";
 
 interface Props {
     questionText: string,
@@ -6,7 +7,7 @@ interface Props {
 
 function CorrectOrderQuestionView(props : Props) {
     return (<div>
-        <p>{props.questionText}</p>
+        <QuestionText questionText={props.questionText}/>
         <div>
             {props.answers.map((item) => <p>{item}</p>)}
         </div>

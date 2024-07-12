@@ -10,13 +10,13 @@ interface Props {
 
 function SelectOptionsQuestionView(props : Props) {
     return (<div>
-        <div>  
+        <div className='flex'>  
             {props.questionSections.map(function(item,index) {
                 if (item === blankArea){
-                    return <BlankArea/> 
+                    return <select className='bg-white mx-2.5 p-2 rounded-lg'>{props.answerOptions[index-1].map((answerOption) => <option>{answerOption}</option>)}</select>
                 }
                 else {
-                    <QuestionText questionText={item}/>
+                    return <QuestionText questionText={item}/>
                 }
             })}
         </div>
