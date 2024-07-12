@@ -18,6 +18,7 @@ import { DragAndDropQuestionData } from "../utils/DragAndDropQuestionData";
 import DragAndDropQuestionView from "../components/questionsView/DragAndDropQuestionView";
 import { MatchingQuestionData } from "../utils/MatchingQuestionData";
 import MatchingQuestionView from "../components/questionsView/MatchingQuestionView";
+import SimpleButton from "../components/common/SimpleButton";
 
 
 function FormPage() {
@@ -89,11 +90,13 @@ function FormPage() {
             
             return <div></div>
         })}
-        {(questionsData.length > 0 && questionIndex < questionsData.length - 2) && <button className='mt-10' onClick={() => {
+        {(questionsData.length > 0 && questionIndex < questionsData.length - 2) &&  <button className='mt-10' onClick={() => {
             questionIndex < questionsData.length - 1 ? setQuestionIndex(questionIndex + 1) : () => {}
         }}>Next</button>}
         {
-            questionIndex === questionsData.length - 1 && <button>Submit</button>
+            questionIndex === questionsData.length - 1 && <SimpleButton buttonText={""} onClick={function (arg: any): void {
+                throw new Error("Function not implemented.");
+            } }/>
         }
     </div>);
 }
