@@ -36,9 +36,9 @@ function MainPage() {
       {(authState === AuthenticationState.LoginForm || authState === AuthenticationState.SignUpForm || 
       authState === AuthenticationState.NotAuthorized) && 
       <div className='w-full h-full absolute bg-slate-100 flex z-10'>
-        <button type='button' className='absolute top-0 right-4' onClick={() => {
+        <button type='button' className='absolute top-0 right-4 w-8 h-8' onClick={() => {
           dispatch(setToNone())
-        }}>Close</button>
+        }}><img className='w-full h-full' src="public/images/common/close.svg"/></button>
       {(authState === AuthenticationState.LoginForm || authState === AuthenticationState.NotAuthorized) && <LoginForm/>}
       {authState === AuthenticationState.SignUpForm && <SignupForm/>}
       </div>}
