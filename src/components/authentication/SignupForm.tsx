@@ -6,6 +6,7 @@ import FormInputField from "./FormInputField";
 import { useAppDispatch } from "../../app/hooks";
 import { setToLoginForm } from "../../app/slices/authenticationSlice";
 import FormOptionText from "./FormOptionText";
+import { v7 as uuidv7 } from 'uuid';
 
 
 function SignupForm() {
@@ -20,6 +21,8 @@ function SignupForm() {
 
     const handleFormSubmit = async(event : FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+
+        const uniqueUserId = uuidv7();
 
         const data = await fetch(signupFormURL,{
             method: "POST"
