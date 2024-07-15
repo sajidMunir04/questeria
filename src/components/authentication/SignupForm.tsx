@@ -7,6 +7,7 @@ import { useAppDispatch } from "../../app/hooks";
 import { setToLoginForm } from "../../app/slices/authenticationSlice";
 import FormOptionText from "./FormOptionText";
 import { v7 as uuidv7 } from 'uuid';
+import { SignUpData } from "./signupData";
 
 
 function SignupForm() {
@@ -24,8 +25,17 @@ function SignupForm() {
 
         const uniqueUserId = uuidv7();
 
+        const userData : Partial<SignUpData> = {
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            password: password,
+            uuid: uniqueUserId
+        }
+
         const data = await fetch(signupFormURL,{
-            method: "POST"
+            method: "POST",
+            body: JSON.stringify(userData);
         })
     }
 
