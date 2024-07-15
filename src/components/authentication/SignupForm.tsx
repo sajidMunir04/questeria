@@ -35,7 +35,7 @@ function SignupForm() {
 
         const data = await fetch(signupFormURL,{
             method: "POST",
-            body: JSON.stringify(userData);
+            body: JSON.stringify(userData)
         })
     }
 
