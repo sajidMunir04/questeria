@@ -8,7 +8,7 @@ export interface AuthState {
 }
 
 const initialState : AuthState = {
-  authState : AuthenticationState.None
+  authState : AuthenticationState.NotAuthorized
 }
 
 export const authenticationSlice = createSlice({
@@ -22,7 +22,7 @@ export const authenticationSlice = createSlice({
       state.authState = AuthenticationState.SignUpForm;
     },
     setToNone: (state) => {
-      state.authState = AuthenticationState.None;
+      state.authState = AuthenticationState.NotAuthorized;
     },
   },
 })

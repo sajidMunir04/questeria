@@ -16,8 +16,6 @@ function MainPage() {
 
     const [selectedView,setSelectedView] = useState<SelectedView>(SelectedView.Dashboard);
     const authState = useAppSelector((state) => state.authenticationState.authState);
-
-    const authenticationState = useAppSelector((state) => state.authenticationState);
     const dispatch = useAppDispatch();
 
     const handleDashboardButton = () => {
@@ -34,17 +32,15 @@ function MainPage() {
 
 
     return (<div className='flex w-full h-full bg-slate-100'>
-      {(authState === AuthenticationState.LoginForm || authState === AuthenticationState.SignUpForm) && 
+
+      {(authState === AuthenticationState.LoginForm || authState === AuthenticationState.SignUpForm || 
+      authState === AuthenticationState.NotAuthorized) && 
       <div className='w-full h-full absolute bg-slate-100 flex z-10'>
         <button type='button' className='absolute top-0 right-4' onClick={() => {
           dispatch(setToNone())
         }}>Close</button>
-      {
-        authState === AuthenticationState.LoginForm && <LoginForm/>
-      }
-      {
-        authState === AuthenticationState.SignUpForm && <SignupForm/>
-      }
+      {(authState === AuthenticationState.LoginForm || authState === AuthenticationState.NotAuthorized) && <LoginForm/>}
+      {authState === AuthenticationState.SignUpForm && <SignupForm/>}
       </div>}
         <NavSection onDashboardButtonClick={handleDashboardButton}
         onQuizzesButtonClick={handleQuizzesButton} onCreateQuizButtonClick={handleCreateQuizButton} selectedView={selectedView}/>

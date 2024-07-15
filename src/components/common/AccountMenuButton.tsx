@@ -49,11 +49,11 @@ export default function AccountMenuButton(props : Props) {
           'aria-labelledby': 'basic-button',
         }}
       >
-        {authenticationState.authState === AuthenticationState.None  && <MenuItem onClick={() => {
+        {authenticationState.authState === AuthenticationState.NotAuthorized  && <MenuItem onClick={() => {
             handleClose();
             dispatch(setToLoginForm());
             }}>Login</MenuItem>}
-        {authenticationState.authState === AuthenticationState.None && <MenuItem onClick={() => {
+        {authenticationState.authState === AuthenticationState.NotAuthorized && <MenuItem onClick={() => {
           handleClose();
           dispatch(setToSignupForm());
           }}>Signup</MenuItem>}

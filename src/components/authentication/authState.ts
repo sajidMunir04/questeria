@@ -1,5 +1,5 @@
 export enum AuthenticationState {
-    None,
+    NotAuthorized,
     LoginForm,
     SignUpForm,
     LoggedIn
