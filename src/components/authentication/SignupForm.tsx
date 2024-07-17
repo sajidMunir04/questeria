@@ -22,21 +22,35 @@ function SignupForm() {
 
     const handleFormSubmit = async(event : FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+    }
 
+
+    const handlePostData = async() => {
         const uniqueUserId = uuidv7();
 
-        const userData : Partial<SignUpData> = {
+        const userData : SignUpData = {
+            username: email,
+            password: password,
             firstName: firstName,
             lastName: lastName,
-            email: email,
-            password: password,
-            uuid: uniqueUserId
+            uniqueID: uniqueUserId,
+            imageUrl: ""
         }
 
-        const data = await fetch(signupFormURL,{
+        console.log(JSON.stringify(userData));
+
+        const response = await fetch(signupFormURL,{
             method: "POST",
+            headers: {
+                'Content-Type':'application/json',
+                'Access-Control-Allow-Origin':'*'
+            },
             body: JSON.stringify(userData)
         })
+
+        const data = await response.json();
+        
+        console.log(data);
     }
 
 
@@ -54,7 +68,7 @@ function SignupForm() {
             <FormInputField inputType={"text"} placeHolder={"Your Email Address"} onChange={setEmail} label={"Email Address"}/>
             <FormInputField inputType={"password"} placeHolder={""} onChange={setPassword} label={"Password"}/>
             <FormInputField inputType={"password"} placeHolder={""} onChange={setConfirmPassword} label={"Confirm Password"}/>
-            <FormButton buttonText={"Sign Up"} onClick={() => {}}/>
+            <FormButton buttonText={"Sign Up"} onClick={handlePostData}/>
             <FormOptionText infoText={"Already have an account?"}/>
             <FormButton buttonText={"Login"} onClick={() => {dispatch(setToLoginForm())}}/>
             </div>
