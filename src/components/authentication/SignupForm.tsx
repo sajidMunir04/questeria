@@ -22,10 +22,6 @@ function SignupForm() {
 
     const handleFormSubmit = async(event : FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-    }
-
-
-    const handlePostData = async() => {
         const uniqueUserId = uuidv7();
 
         const userData : SignUpData = {
@@ -53,7 +49,6 @@ function SignupForm() {
         console.log(data);
     }
 
-
     return (<form onSubmit={handleFormSubmit} className='flex flex-col w-2/5 m-auto bg-white rounded-3xl'>
         <FormHeading text={""}/>
             <div className='w-full p-10'>
@@ -68,7 +63,7 @@ function SignupForm() {
             <FormInputField inputType={"text"} placeHolder={"Your Email Address"} onChange={setEmail} label={"Email Address"}/>
             <FormInputField inputType={"password"} placeHolder={""} onChange={setPassword} label={"Password"}/>
             <FormInputField inputType={"password"} placeHolder={""} onChange={setConfirmPassword} label={"Confirm Password"}/>
-            <FormButton buttonText={"Sign Up"} onClick={handlePostData}/>
+            <FormButton buttonText={"Sign Up"} onClick={() => {}}/>
             <FormOptionText infoText={"Already have an account?"}/>
             <FormButton buttonText={"Login"} onClick={() => {dispatch(setToLoginForm())}}/>
             </div>
