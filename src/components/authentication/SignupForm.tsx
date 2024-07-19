@@ -33,8 +33,6 @@ function SignupForm() {
             imageUrl: ""
         }
 
-        console.log(JSON.stringify(userData));
-
         const response = await fetch(signupFormURL,{
             method: "POST",
             headers: {
