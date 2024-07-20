@@ -22,8 +22,7 @@ function LoginForm() {
             password : password
         }
 
-        const response = await fetch (loginFormURL,
-            {
+        const response = await fetch (loginFormURL, {
                 method: "POST",
                 body: JSON.stringify(formData),
                 headers:{
