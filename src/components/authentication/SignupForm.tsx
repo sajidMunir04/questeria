@@ -37,6 +37,7 @@ function SignupForm() {
             method: "POST",
             headers: {
                 'Content-Type':'application/json',
+                "Access-Control-Allow-Methods": 'OPTIONS,POST,GET',
                 'Access-Control-Allow-Origin':'*'
             },
             body: JSON.stringify(userData)

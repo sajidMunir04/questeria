@@ -27,6 +27,7 @@ function LoginForm() {
                 body: JSON.stringify(formData),
                 headers:{
                     'Content-Type':'application/json',
+                    "Access-Control-Allow-Methods": 'OPTIONS,POST,GET',
                     'Access-Control-Allow-Origin':'*'
                 }
             });
