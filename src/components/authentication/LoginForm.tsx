@@ -24,12 +24,7 @@ function LoginForm() {
 
         const response = await fetch (loginFormURL, {
                 method: "POST",
-                body: JSON.stringify(formData),
-                headers:{
-                    'Content-Type':'application/json',
-                    "Access-Control-Allow-Methods": 'OPTIONS,POST,GET',
-                    'Access-Control-Allow-Origin':'*'
-                }
+                body: JSON.stringify(formData)
             });
 
         const data = await response.json();

@@ -35,11 +35,6 @@ function SignupForm() {
 
         const response = await fetch(signupFormURL,{
             method: "POST",
-            headers: {
-                'Content-Type':'application/json',
-                'Access-Control-Allow-Origin':'*',
-                'Access-Control-Allow-Headers': 'OPTIONS,POST'
-            },
             body: JSON.stringify(userData)
         })
 
